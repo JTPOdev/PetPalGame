@@ -10,7 +10,8 @@ public class SceneData : MonoBehaviour
     public static int eggselect = 3;
     public static int egghatchcat = 4;
     public static int egghatchdog = 5;
-    public static int main = 6;
+    public static int maincat = 6;
+    public static int maindog = 7;
 
 
 }

@@ -27,8 +27,11 @@ EditorBuildSettings:
     path: Assets/Scenes/EggHatchDog.unity
     guid: a834eaa641ba5de49b5d3c5bbcdaeb44
   - enabled: 1
-    path: Assets/Scenes/Main.unity
+    path: Assets/Scenes/Main Cat.unity
     guid: 6b77df3e501c6d14ca68d869f4ece170
+  - enabled: 1
+    path: Assets/Scenes/Main Dog.unity
+    guid: 127acab4aea46184ea67a95f3b155ee5
   - enabled: 1
     path: Assets/Scenes/Food.unity
     guid: e23735dd693f6444ab62e4f91e0c9493
