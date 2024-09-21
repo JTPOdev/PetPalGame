@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 317996796}
   - component: {fileID: 317996795}
   - component: {fileID: 317996794}
-  - component: {fileID: 317996793}
+  - component: {fileID: 317996797}
   - component: {fileID: 317996791}
   m_Layer: 5
   m_Name: Button
@@ -186,22 +186,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &317996793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 317996789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13210a067277b1e4899757af2a986bcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PawAnim: {fileID: 612578569}
-  max: 10
-  ClickCounter: 0
-  barscript: {fileID: 1209955517}
 --- !u!114 &317996794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,6 +268,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 317996789}
   m_CullTransparentMesh: 1
+--- !u!114 &317996797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317996789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 213f05cd6a969fe41b852eab7337bfbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PawAnim: {fileID: 612578569}
+  max: 10
+  ClickCounter: 0
+  barscript: {fileID: 1209955517}
 --- !u!1 &612578568
 GameObject:
   m_ObjectHideFlags: 0

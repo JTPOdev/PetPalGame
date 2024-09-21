@@ -4191,6 +4191,41 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Woop
+    clip: {fileID: 8300000, guid: e0cedaf8ca61333449d9cc9bbe976dd8, type: 3}
+    mixer: {fileID: 24300002, guid: 144d474cf1592724cafd2f6a047e43e1, type: 2}
+    volume: 3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: OpenCelebrate
+    clip: {fileID: 8300000, guid: 471991acd71ca2e4d9cdcdf8caa44997, type: 3}
+    mixer: {fileID: 24300002, guid: 144d474cf1592724cafd2f6a047e43e1, type: 2}
+    volume: 3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EggBreak 1
+    clip: {fileID: 8300000, guid: 7550d0cdc53081743968c8748bf13b96, type: 3}
+    mixer: {fileID: 24300002, guid: 144d474cf1592724cafd2f6a047e43e1, type: 2}
+    volume: 3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EggBreak 2
+    clip: {fileID: 8300000, guid: 9c293c96c86cc9545afa3b3bdc221f44, type: 3}
+    mixer: {fileID: 24300002, guid: 144d474cf1592724cafd2f6a047e43e1, type: 2}
+    volume: 3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EggBreak 3
+    clip: {fileID: 8300000, guid: 69e3af37d1a856c42ab2145c5ed936d0, type: 3}
+    mixer: {fileID: 24300002, guid: 144d474cf1592724cafd2f6a047e43e1, type: 2}
+    volume: 3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &1897076776
 Transform:
   m_ObjectHideFlags: 0
