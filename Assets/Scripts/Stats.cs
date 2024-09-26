@@ -7,15 +7,17 @@ public class Stats : MonoBehaviour
 {
     public float hunger = 100f;
     public float thirst = 100f;
-    public float health = 100f;
+    public float sleep = 100f;
     public float bath = 100f;
     public float fun = 100f;
+    //public float health = 100f;
 
     public Slider HungerBar;
     public Slider ThirstBar;
-    public Slider HealthBar;
+    public Slider SleepBar;
     public Slider BathBar;
     public Slider FunBar;
+    //public Slider HealthBar
 
     // Decrease amount and time interval
     public float decreaseAmount = 10f; // The amount to decrease
@@ -28,9 +30,10 @@ public class Stats : MonoBehaviour
 
         StartCoroutine(DecreaseHunger());
         StartCoroutine(DecreaseThirst());
-        StartCoroutine(DecreaseHealth());
+        StartCoroutine(DecreaseSleep());
         StartCoroutine(DecreaseBath());
         StartCoroutine(DecreaseFun());
+        //StartCoroutine(DecreaseHealth())
     }
 
     IEnumerator DecreaseHunger()
@@ -55,17 +58,28 @@ public class Stats : MonoBehaviour
         }
     }
 
-    // Coroutine to decrease health over time
-    IEnumerator DecreaseHealth()
+    // Coroutine to decrease sleep over time
+    IEnumerator DecreaseSleep()
     {
-        while (health > 0)
+        while (sleep > 0)
         {
             yield return new WaitForSeconds(decreaseInterval);
-            health -= decreaseAmount;
-            if (health < 0) health = 0;
+            sleep -= decreaseAmount;
+            if (sleep < 0) sleep = 0;
             UpdateBars();
         }
     }
+
+    // IEnumerator DecreaseHealth()
+    // {
+    //     while (health > 0)
+    //     {
+    //         yield return new WaitForSeconds(decreaseInterval);
+    //         health -= decreaseAmount;
+    //         if (health < 0) health = 0;
+    //         UpdateBars();
+    //     }
+    // }
 
     // Coroutine to decrease bath over time
     IEnumerator DecreaseBath()
@@ -96,8 +110,9 @@ public class Stats : MonoBehaviour
     {
         if (HungerBar != null) HungerBar.value = hunger;
         if (ThirstBar != null) ThirstBar.value = thirst;
-        if (HealthBar != null) HealthBar.value = health;
+        if (SleepBar != null) SleepBar.value = sleep;
         if (BathBar != null) BathBar.value = bath;
         if (FunBar != null) FunBar.value = fun;
+        // if (HealthBar != null) HealthBar.value = fun;
     }
 }
