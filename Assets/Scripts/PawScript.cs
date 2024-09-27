@@ -1,12 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PawScript : MonoBehaviour
+
 {
     [SerializeField] RectTransform PawAnim;
+    public static PawScript scene1;
+    public string pet_name;
+    public TMP_InputField inputField;
 
+    public void Awake ()
+    {
+        if (scene1 == null)
+        {
+            scene1 = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
         PawAnim.gameObject.SetActive(true);
@@ -38,6 +55,7 @@ public class PawScript : MonoBehaviour
         LeanTween.scale(PawAnim, Vector3.zero, 0f);
         LeanTween.scale(PawAnim, new Vector3(1, 1, 1), 1.1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() =>
         {
+            pet_name = inputField.text;
             SceneManager.LoadScene(SceneData.egghatchcat);
         });
     }
@@ -47,8 +65,9 @@ public class PawScript : MonoBehaviour
         AudioManager.instance.Play("ButtonPressed");
         PawAnim.gameObject.SetActive(true);
         LeanTween.scale(PawAnim, Vector3.zero, 0f);
-        LeanTween.scale(PawAnim, new Vector3(1, 1, 1), 1.1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() => {
-
+        LeanTween.scale(PawAnim, new Vector3(1, 1, 1), 1.1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() => 
+        {
+            pet_name = inputField.text;
             SceneManager.LoadScene(SceneData.egghatchdog);
         });
     }
