@@ -244,7 +244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 134533573}
   m_Layer: 5
-  m_Name: HealthBar
+  m_Name: SleepBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -783,7 +783,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fd2a726640862b549b263e309da9cfd6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7551f317d52839848a54be4fab5c7c58, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -835,8 +835,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 416.9983, y: 763.00305}
-  m_SizeDelta: {x: 204.3197, y: 210.3704}
+  m_AnchoredPosition: {x: 419.62183, y: 760.7543}
+  m_SizeDelta: {x: 199.0725, y: 205.8728}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &557515141
 MonoBehaviour:
@@ -858,7 +858,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e460e57a1c4686149b0f6bd1b1e22fdc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 139e7e9abbc3aa443917e7e593d7cc85, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
