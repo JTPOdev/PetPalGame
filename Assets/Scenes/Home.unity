@@ -5177,9 +5177,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1941689721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6239f7ba0e7d72743b5c7951aca3c32f, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a17746ba24c3744ca25a2a62ae346a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BGMusicSlider: {fileID: 0}
+  SFXMusicSlider: {fileID: 0}
+  BGmixer: {fileID: 0}
+  SFXmixer: {fileID: 0}
 --- !u!1 &2118378754
 GameObject:
   m_ObjectHideFlags: 0
