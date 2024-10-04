@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PawScript : MonoBehaviour
@@ -50,6 +51,18 @@ public class PawScript : MonoBehaviour
         LeanTween.scale(PawAnim, new Vector3(1, 1, 1), 1.1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() => {
 
             SceneManager.LoadScene(SceneData.egghatchdog);
+        });
+    }
+
+    public void openHomeMenu()
+    {
+        AudioManager.instance.Play("ButtonPressed");
+        AudioManager.instance.Stop("MainBGaudio");
+        PawAnim.gameObject.SetActive(true);
+        LeanTween.scale(PawAnim, Vector3.zero, 0f);
+        LeanTween.scale(PawAnim, new Vector3(1, 1, 1), 1.1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() => {
+
+            SceneManager.LoadScene(SceneData.home);
         });
     }
 }
