@@ -22,7 +22,7 @@ public class BuynFeed : MonoBehaviour
     public Button feedButton;  
 
     private int selectedFoodCost = 0;
-    private bool isBuying = false;  // Add flag to prevent multiple purchases
+    private bool isBuying = false;  
 
     void Start()
     {
@@ -34,8 +34,8 @@ public class BuynFeed : MonoBehaviour
             Debug.LogError("One or more buttons are not assigned!");
         }
 
-        // Add listeners for food selection buttons
-        dogFoodButton.onClick.RemoveAllListeners(); // Remove previous listeners if any
+
+        dogFoodButton.onClick.RemoveAllListeners(); 
         dogFoodButton.onClick.AddListener(() => SelectFood(10));  
         
         turkeyFoodButton.onClick.RemoveAllListeners();
@@ -53,7 +53,7 @@ public class BuynFeed : MonoBehaviour
         milkShakeDrinkButton.onClick.RemoveAllListeners();
         milkShakeDrinkButton.onClick.AddListener(() => SelectFood(20)); 
 
-        // Add listeners for Buy and Feed buttons
+        
         buyButton.onClick.RemoveAllListeners();
         buyButton.onClick.AddListener(BuyItem);
         
@@ -68,16 +68,15 @@ public class BuynFeed : MonoBehaviour
         Debug.Log("Selected food cost: " + selectedFoodCost);
     }
 
-    // When Buy button is clicked
     void BuyItem()
     {
-        if (isBuying) return;  // Prevent multiple quick purchases
-        isBuying = true;  // Set the flag to lock further purchases
+        if (isBuying) return;  
+        isBuying = true;  
 
         if (coinScript == null)
         {
             Debug.LogError("CoinScript reference is null!");
-            isBuying = false;  // Reset flag
+            isBuying = false; 
             return; 
         }
 
@@ -91,7 +90,7 @@ public class BuynFeed : MonoBehaviour
             Debug.Log("Not enough coins to purchase the item.");
         }
 
-        isBuying = false;  // Reset the flag after transaction
+        isBuying = false;  
     }
 
     // When Feed button is clicked
@@ -107,7 +106,7 @@ public class BuynFeed : MonoBehaviour
         {
             hungerLevel = Mathf.Min(hungerLevel + hungerRestoreAmount, 100);  // Restore hunger
             Debug.Log("Pet fed. Hunger level: " + hungerLevel);
-            itemPurchased = false;  // Reset purchase status after feeding
+            itemPurchased = false; 
         }
         else if (hungerLevel >= 100)
         {

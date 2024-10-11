@@ -27,7 +27,7 @@ public class FoodItem
     }
 }
 
-    // Declare your food items the desc and the cost of food
+    // Declare your food items the description and the cost of the food
     private FoodItem dogFood = new FoodItem("Dog Food", "+5 HUNGER", 10);
     private FoodItem turkey = new FoodItem("Turkey", "+15 HUNGER", 30);
     private FoodItem steak = new FoodItem("Steak", "+20 HUNGER", 50);
