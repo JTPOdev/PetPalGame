@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Dog.unity
     guid: 127acab4aea46184ea67a95f3b155ee5
+  - enabled: 1
+    path: Assets/Scenes/Playground.unity
+    guid: 45d9f8970e8f45642b5b2d361ec4b8bd
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 5315ff5cdc069ec468d6605f740d9e82, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: caa1125563a8c5e4d833515f6ce71bf4, type: 2}

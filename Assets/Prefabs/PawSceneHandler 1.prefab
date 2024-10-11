@@ -50,8 +50,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PawAnim: {fileID: 8643289022277734718}
-  inputField: {fileID: 0}
-  pet_name: 
 --- !u!1 &615202364178643289
 GameObject:
   m_ObjectHideFlags: 0

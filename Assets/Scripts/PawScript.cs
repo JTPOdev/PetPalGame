@@ -75,28 +75,4 @@ public class PawScript : MonoBehaviour
             SceneManager.LoadScene(SceneData.egghatchdog);
         });
     }
-    // private IEnumerator SubmitPetName(string type)
-    // {
-    //     pet_name = inputField.text; // Get the name from the input field
-    //     PlayerPrefs.SetString("PetName", pet_name); // Save the pet name
-
-    //     // Create form data
-    //     WWWForm form = new WWWForm();
-    //     form.AddField("name", pet_name); // Add name to form data
-
-    //     using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/PetPalGame/GetName.php", form))
-    //     {
-    //         yield return www.SendWebRequest();
-
-    //         if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
-    //         {
-    //             Debug.LogError("Error: " + www.error);
-    //         }
-    //         else
-    //         {
-                
-    //             SceneManager.LoadScene(type == "cat" ? SceneData.egghatchcat : SceneData.egghatchdog);
-    //         }
-    //     }
-    // }
 }
