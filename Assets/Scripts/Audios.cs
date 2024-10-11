@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Audios : MonoBehaviour
 {
-    public static Audios instance;
 
     public void ButtonPressed()
     {
