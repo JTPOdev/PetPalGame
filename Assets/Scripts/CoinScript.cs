@@ -5,7 +5,7 @@ using TMPro;
 
 public class CoinScript : MonoBehaviour
 {
-    public int PlayerCoins = 1000;
+    public int PlayerCoins = 0;
     public TMP_Text coinText;
 
     void Start()
