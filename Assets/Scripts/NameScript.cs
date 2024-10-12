@@ -1,65 +1,42 @@
-using System.Collections;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Networking;
-using UnityEngine.UI;
+using TMPro;
+using System.Text.RegularExpressions; // Add this to use Regex
 
 public class NameScript : MonoBehaviour
 {
-    public TextMeshProUGUI display_pet_name;
-    public GameObject popupPanel; // Reference to the popup panel
+    public TMP_InputField nameInputField;   
+    public TextMeshProUGUI nameDisplayText;  
+    public GameObject namePopupPanel;        
 
-    public void Awake()
-    {
-        display_pet_name.text = PawScript.scene1.pet_name;
-        popupPanel.SetActive(false); // Hide the popup at the start
-    }
+    private const string PetNameKey = "PetName";  
 
     void Start()
     {
-        StartCoroutine(GetPetNames());
+        nameDisplayText.text = "";            
+        namePopupPanel.SetActive(true);       
     }
 
-    IEnumerator GetPetNames()
+    // Called when the user submits the name
+    public void OnSubmitName()
     {
-        using (UnityWebRequest www = UnityWebRequest.Get("http://localhost/PetPalGame/GetName.php"))
+        string petName = nameInputField.text;  // Get the text from the input field.
+
+        // Regular expression to check if the name contains only letters (a-z, A-Z)
+        if (!string.IsNullOrEmpty(petName) && Regex.IsMatch(petName, @"^[a-zA-Z]+$"))
         {
-            yield return www.SendWebRequest();
+            // Save the name to PlayerPrefs (optional, if you want to save it for later)
+            PlayerPrefs.SetString(PetNameKey, petName);
+            PlayerPrefs.Save();  // Save changes to PlayerPrefs
 
-            if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
-            {
-                Debug.LogError("Error: " + www.error);
-            }
-            else
-            {
-                // JSON response
-                string jsonResponse = www.downloadHandler.text;
-                NameList petNamesList = JsonUtility.FromJson<NameList>(jsonResponse);
+            // Display the name on the main screen
+            nameDisplayText.text = petName;
 
-                if (petNamesList.names.Length > 0)
-                {
-                    display_pet_name.text = petNamesList.names[20];
-                    popupPanel.SetActive(true); 
-                }
-                else
-                {
-                    display_pet_name.text = "No names found.";
-                    popupPanel.SetActive(true); 
-                }
-            }
+            // Hide the pop-up after submitting the name
+            namePopupPanel.SetActive(false);
+        }
+        else
+        {
+            nameDisplayText.text = "Please enter a valid name using letters only."; // Error message if the name is invalid.
         }
     }
-
-    
-    public void ClosePopup()
-    {
-        popupPanel.SetActive(false); // Hide the popup
-    }
-}
-
-
-[System.Serializable]
-public class NameList
-{
-    public string[] names;
 }
