@@ -6,7 +6,8 @@ using TMPro;
 public class CoinScript : MonoBehaviour
 {
     public int PlayerCoins = 0;
-    public TMP_Text coinText;
+    public TMP_Text coinText1;
+    public TMP_Text coinText2;
 
     void Start()
     {
@@ -39,9 +40,14 @@ public class CoinScript : MonoBehaviour
     // Method to update the UI display
     private void UpdateCoinUI()
     {
-        if (coinText != null)
+        if (coinText1 != null)
         {
-            coinText.text = " " + PlayerCoins;
+            coinText1.text = " " + PlayerCoins;
+        }
+
+        if (coinText2 != null)
+        {
+            coinText2.text = " " + PlayerCoins;
         }
         else
         {

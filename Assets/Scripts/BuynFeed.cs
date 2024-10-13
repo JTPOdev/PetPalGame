@@ -18,6 +18,17 @@ public class BuynFeed : MonoBehaviour
     public Button milkDrinkButton;  
     public Button milkShakeDrinkButton;
 
+    public GameObject mainPage;
+    public GameObject storePage;
+    public GameObject tablePage;
+
+    public GameObject dogFoodImg;
+    public GameObject turkeyFoodImg;
+    public GameObject steakFoodImg;
+    public GameObject waterDrinkImg;
+    public GameObject milkDrinkImg;
+    public GameObject milkshakeDrinkImg;
+
     public Button buyButton;  
     public Button feedButton;  
 
@@ -34,26 +45,47 @@ public class BuynFeed : MonoBehaviour
             Debug.LogError("One or more buttons are not assigned!");
         }
 
+        //Pages turned OFF
+        mainPage.SetActive(false);
+        storePage.SetActive(true);
+        tablePage.SetActive(false);
+
+        //Food Image turned OFF
+        dogFoodImg.SetActive(false);
+        turkeyFoodImg.SetActive(false);
+        steakFoodImg.SetActive(false);
+
+        //Drink Image Turned OFF
+        waterDrinkImg.SetActive(false);
+        milkDrinkImg.SetActive(false);
+        milkshakeDrinkImg.SetActive(false);
 
         dogFoodButton.onClick.RemoveAllListeners(); 
-        dogFoodButton.onClick.AddListener(() => SelectFood(10));  
-        
-        turkeyFoodButton.onClick.RemoveAllListeners();
-        turkeyFoodButton.onClick.AddListener(() => SelectFood(30));  
-        
-        steakFoodButton.onClick.RemoveAllListeners();
-        steakFoodButton.onClick.AddListener(() => SelectFood(50));   
-        
-        waterDrinkButton.onClick.RemoveAllListeners();
-        waterDrinkButton.onClick.AddListener(() => SelectFood(5));    
-        
-        milkDrinkButton.onClick.RemoveAllListeners();
-        milkDrinkButton.onClick.AddListener(() => SelectFood(15));    
-        
-        milkShakeDrinkButton.onClick.RemoveAllListeners();
-        milkShakeDrinkButton.onClick.AddListener(() => SelectFood(20)); 
+        dogFoodButton.onClick.AddListener(() => SelectFood(10));
+        dogFoodButton.onClick.AddListener(dogFoodImage);
 
-        
+        turkeyFoodButton.onClick.RemoveAllListeners();
+        turkeyFoodButton.onClick.AddListener(() => SelectFood(30));
+        turkeyFoodButton.onClick.AddListener(turkeyFoodImage);
+
+
+        steakFoodButton.onClick.RemoveAllListeners();
+        steakFoodButton.onClick.AddListener(() => SelectFood(50));
+        steakFoodButton.onClick.AddListener(steakFoodImage);
+
+        waterDrinkButton.onClick.RemoveAllListeners();
+        waterDrinkButton.onClick.AddListener(() => SelectFood(5));
+        waterDrinkButton.onClick.AddListener(waterDrinkImage);
+
+        milkDrinkButton.onClick.RemoveAllListeners();
+        milkDrinkButton.onClick.AddListener(() => SelectFood(15));
+        milkDrinkButton.onClick.AddListener(milkDrinkImage);
+
+        milkShakeDrinkButton.onClick.RemoveAllListeners();
+        milkShakeDrinkButton.onClick.AddListener(() => SelectFood(20));
+        milkShakeDrinkButton.onClick.AddListener(milkshakeDrinkImage);
+
+
         buyButton.onClick.RemoveAllListeners();
         buyButton.onClick.AddListener(BuyItem);
         
@@ -76,7 +108,7 @@ public class BuynFeed : MonoBehaviour
         if (coinScript == null)
         {
             Debug.LogError("CoinScript reference is null!");
-            isBuying = false; 
+            isBuying = false;
             return; 
         }
 
@@ -106,7 +138,11 @@ public class BuynFeed : MonoBehaviour
         {
             hungerLevel = Mathf.Min(hungerLevel + hungerRestoreAmount, 100);  // Restore hunger
             Debug.Log("Pet fed. Hunger level: " + hungerLevel);
-            itemPurchased = false; 
+            itemPurchased = false;
+
+            mainPage.SetActive(true);  //  Opens mainpage scene
+            storePage.SetActive(false);  //  Closes storepage scene
+            tablePage.SetActive(true);
         }
         else if (hungerLevel >= 100)
         {
@@ -116,5 +152,36 @@ public class BuynFeed : MonoBehaviour
         {
             Debug.Log("You need to purchase food first.");
         }
+    }
+
+    // Activate Image
+    public void dogFoodImage()
+    {
+        dogFoodImg.SetActive(true);
+    }
+
+    public void turkeyFoodImage()
+    {
+        turkeyFoodImg.SetActive(true);
+    }
+
+    public void steakFoodImage()
+    {
+        steakFoodImg.SetActive(true);
+    }
+
+    public void waterDrinkImage()
+    {
+        waterDrinkImg.SetActive(true);
+    }
+
+    public void milkDrinkImage()
+    {
+        milkDrinkImg.SetActive(true);
+    }
+
+    public void milkshakeDrinkImage()
+    {
+        milkshakeDrinkImg.SetActive(true);
     }
 }
