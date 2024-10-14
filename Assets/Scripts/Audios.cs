@@ -14,4 +14,19 @@ public class Audios : MonoBehaviour
     {
         AudioManager.instance.Play("Quack");
     }
+
+    public void PopUp()
+    {
+        AudioManager.instance.Play("PopUp");
+    }
+
+    public void GameOver()
+    {
+        AudioManager.instance.Play("Gameover");
+    }
+
+    public void Pop()
+    {
+        AudioManager.instance.Play("Pop");
+    }
 }
