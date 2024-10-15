@@ -14,18 +14,23 @@ public class Player : MonoBehaviour
 
     // Extra Jump
     public int maxJumpValue;
-    int maxjump;
+    private int maxjump;
+
+    // Sound management
+    private bool wasGrounded; 
 
     private void Start()
     {
         maxjump = maxJumpValue;
         rb = GetComponent<Rigidbody2D>();
+        wasGrounded = true; // Initialize as grounded
     }
 
     private void Update()
     {
         isGrounded = Physics2D.OverlapCircle(GroundCheck.position, CheckRadius, whatIsGround);
 
+        // Jump logic
         if (Input.GetMouseButtonDown(0) && maxjump > 0)
         {
             maxjump--;
@@ -36,14 +41,19 @@ public class Player : MonoBehaviour
             Jump();
         }
 
+      
         if (isGrounded)
         {
             maxjump = maxJumpValue;
         }
-        if (isGrounded == false)
+
+        // Handle landing sound
+        if (isGrounded && !wasGrounded) 
         {
             AudioManager.instance.Play("Land");
         }
+
+        wasGrounded = isGrounded; 
     }
 
     void Jump()

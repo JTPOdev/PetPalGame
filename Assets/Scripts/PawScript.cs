@@ -23,7 +23,7 @@ public class PawScript : MonoBehaviour
 
     public void openEggSelect()
     {
-        AudioManager.instance.Play("ButtonPressed");
+        // AudioManager.instance.Play("ButtonPressed");
         PawAnim.gameObject.SetActive(true);
         LeanTween.scale(PawAnim, Vector3.zero, 0f);
         LeanTween.scale(PawAnim, new Vector3(1, 1, 1), 1.1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() =>
@@ -34,7 +34,7 @@ public class PawScript : MonoBehaviour
 
     public void openEggCat()
     {
-        AudioManager.instance.Play("ButtonPressed");
+        // AudioManager.instance.Play("ButtonPressed");
         PawAnim.gameObject.SetActive(true);
         LeanTween.scale(PawAnim, Vector3.zero, 0f);
         LeanTween.scale(PawAnim, new Vector3(1, 1, 1), 1.1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() =>
@@ -46,7 +46,7 @@ public class PawScript : MonoBehaviour
 
     public void openEggDog()
     {
-        AudioManager.instance.Play("ButtonPressed");
+        // AudioManager.instance.Play("ButtonPressed");
         PawAnim.gameObject.SetActive(true);
         LeanTween.scale(PawAnim, Vector3.zero, 0f);
         LeanTween.scale(PawAnim, new Vector3(1, 1, 1), 1.1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() =>
@@ -58,26 +58,26 @@ public class PawScript : MonoBehaviour
 
     public void openCatPlays()
     {
-        AudioManager.instance.Play("ButtonPressed");
-        AudioManager.instance.Stop("MainBGaudio");
+        // AudioManager.instance.Play("ButtonPressed");
+        // AudioManager.instance.Stop("MainBGaudio");
         PawAnim.gameObject.SetActive(true);
         LeanTween.scale(PawAnim, Vector3.zero, 0f);
         LeanTween.scale(PawAnim, new Vector3(1, 1, 1), 1.1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() =>
         {
-            AudioManager.instance.Play("PlaygroundBGaudio");
+            // AudioManager.instance.Play("PlaygroundBGaudio");
             SceneManager.LoadScene(SceneData.catplayground);
         });
     }
 
     public void openDogPlays()
     {
-        AudioManager.instance.Play("ButtonPressed");
-        AudioManager.instance.Stop("MainBGaudio");
+        // AudioManager.instance.Play("ButtonPressed");
+        // AudioManager.instance.Stop("MainBGaudio");
         PawAnim.gameObject.SetActive(true);
         LeanTween.scale(PawAnim, Vector3.zero, 0f);
         LeanTween.scale(PawAnim, new Vector3(1, 1, 1), 1.1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() =>
         {
-            AudioManager.instance.Play("PlaygroundBGaudio");
+            // AudioManager.instance.Play("PlaygroundBGaudio");
             SceneManager.LoadScene(SceneData.dogplayground);
         });
     }
