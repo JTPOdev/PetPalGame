@@ -641,6 +641,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5645980482042730650, guid: 80afa0ac224abe0469124251fbea9cfa, type: 3}
+      propertyPath: PawAnim
+      value: 
+      objectReference: {fileID: 187136215}
     - target: {fileID: 8866789633210387064, guid: 80afa0ac224abe0469124251fbea9cfa, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000019073486
@@ -653,6 +657,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80afa0ac224abe0469124251fbea9cfa, type: 3}
+--- !u!224 &187136215 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8069661610771485258, guid: 80afa0ac224abe0469124251fbea9cfa, type: 3}
+  m_PrefabInstance: {fileID: 187136214}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &250901415
 GameObject:
   m_ObjectHideFlags: 0

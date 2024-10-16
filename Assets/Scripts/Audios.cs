@@ -29,4 +29,9 @@ public class Audios : MonoBehaviour
     {
         AudioManager.instance.Play("Pop");
     }
+
+    public void Snore()
+    {
+        AudioManager.instance.Play("Snore");
+    }
 }

@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Home.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
   - enabled: 1
-    path: Assets/Scenes/Load.unity
-    guid: 25d246ec5522d244eb1f3e4c7d7102e5
-  - enabled: 1
     path: Assets/Scenes/EggSelect.unity
     guid: 9edc47d4892587c48a8e955332a2d931
   - enabled: 1
@@ -25,16 +22,22 @@ EditorBuildSettings:
     guid: a834eaa641ba5de49b5d3c5bbcdaeb44
   - enabled: 1
     path: Assets/Scenes/Main Cat.unity
-    guid: 6b77df3e501c6d14ca68d869f4ece170
+    guid: 38d73f72484464644beeaa3259f3749f
   - enabled: 1
     path: Assets/Scenes/Main Dog.unity
     guid: 127acab4aea46184ea67a95f3b155ee5
   - enabled: 1
     path: Assets/Scenes/CatPlayground.unity
-    guid: 45d9f8970e8f45642b5b2d361ec4b8bd
+    guid: 84add54d38c589e4f8cd73f2181875fc
   - enabled: 1
     path: Assets/Scenes/DogPlayground.unity
     guid: 885561ac753087d4580534a970b0040c
+  - enabled: 1
+    path: Assets/Scenes/CatBed.unity
+    guid: ff63717d9d8fdc44f8e9c2d31c5baf41
+  - enabled: 1
+    path: Assets/Scenes/DogBed.unity
+    guid: 35ed572112c83e24ca81dcd96aef1d51
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 5315ff5cdc069ec468d6605f740d9e82, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: caa1125563a8c5e4d833515f6ce71bf4, type: 2}

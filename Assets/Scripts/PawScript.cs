@@ -21,6 +21,17 @@ public class PawScript : MonoBehaviour
         });
     }
 
+    public void openHomeMenu()
+    {
+        // AudioManager.instance.Play("ButtonPressed");
+        PawAnim.gameObject.SetActive(true);
+        LeanTween.scale(PawAnim, Vector3.zero, 0f);
+        LeanTween.scale(PawAnim, new Vector3(1, 1, 1), 1.1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() =>
+        {
+            SceneManager.LoadScene(SceneData.home);
+        });
+    }
+
     public void openEggSelect()
     {
         // AudioManager.instance.Play("ButtonPressed");
@@ -79,6 +90,28 @@ public class PawScript : MonoBehaviour
         {
             // AudioManager.instance.Play("PlaygroundBGaudio");
             SceneManager.LoadScene(SceneData.dogplayground);
+        });
+    }
+
+    public void openCatBedroom()
+    {
+        PawAnim.gameObject.SetActive(true);
+        LeanTween.scale(PawAnim, Vector3.zero, 0f);
+        LeanTween.scale(PawAnim, new Vector3(1, 1, 1), 1.1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() =>
+        {
+            AudioManager.instance.Stop("MainBGaudio");
+            SceneManager.LoadScene(SceneData.catbed);
+        });
+    }
+
+    public void openDogBedroom()
+    {
+        PawAnim.gameObject.SetActive(true);
+        LeanTween.scale(PawAnim, Vector3.zero, 0f);
+        LeanTween.scale(PawAnim, new Vector3(1, 1, 1), 1.1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() =>
+        {
+            AudioManager.instance.Stop("MainBGaudio");
+            SceneManager.LoadScene(SceneData.dogbed);
         });
     }
 }

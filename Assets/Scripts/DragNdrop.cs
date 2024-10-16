@@ -53,6 +53,8 @@ public class DragNdrop : MonoBehaviour
             inUse = true;//holding the image
             //anim.SetTrigger("TRcrack");
             slotPos = collision.transform.position;//collider for box position
+            
+
         }
     }
 
@@ -61,6 +63,7 @@ public class DragNdrop : MonoBehaviour
         if (collision.CompareTag("Mouth"))//tag for image box
         {
             inUse = false;//if not inuse, not holding the image
+
         }
     }
 }

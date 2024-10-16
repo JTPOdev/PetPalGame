@@ -13,9 +13,14 @@ public class LightControl : MonoBehaviour
     public GameObject darkOverlay;  // Reference to the dark overlay object
     public GameObject dogAwake;  // Awake dog image
     public GameObject dogSleep;  // Sleeping dog image
+    public GameObject backButton;
 
     private bool isLightOn = true;  // Track the light state
 
+    void Start()
+    {
+        AudioManager.instance.Play("NightBGaudio");
+    }
     public void ToggleLight()
     {
         isLightOn = !isLightOn;  // Toggle the light state
@@ -32,6 +37,8 @@ public class LightControl : MonoBehaviour
             darkOverlay.SetActive(false);  // Hide the dark overlay
             dogAwake.SetActive(true);
             dogSleep.SetActive(false);
+            backButton.SetActive(true);
+            AudioManager.instance.Play("Switch");
         }
         else
         {
@@ -41,6 +48,8 @@ public class LightControl : MonoBehaviour
             darkOverlay.SetActive(true);  // Show the dark overlay
             dogAwake.SetActive(false);
             dogSleep.SetActive(true);
+            backButton.SetActive(false);
+            AudioManager.instance.Play("Switch");
         }
     }
 }

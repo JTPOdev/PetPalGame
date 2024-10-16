@@ -12,6 +12,7 @@ public class PawPlaygroundScript : MonoBehaviour
     {
         AudioManager.instance.Play("ButtonPressed");
         AudioManager.instance.Stop("PlaygroundBGaudio");
+        AudioManager.instance.Stop("NightBGaudio");
         PawAnim.gameObject.SetActive(true);
         LeanTween.scale(PawAnim, Vector3.zero, 0f);
         LeanTween.scale(PawAnim, new Vector3(1, 1, 1), 1.1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() =>
@@ -25,6 +26,7 @@ public class PawPlaygroundScript : MonoBehaviour
     {
         AudioManager.instance.Play("ButtonPressed");
         AudioManager.instance.Stop("PlaygroundBGaudio");
+        AudioManager.instance.Stop("NightBGaudio");
         PawAnim.gameObject.SetActive(true);
         LeanTween.scale(PawAnim, Vector3.zero, 0f);
         LeanTween.scale(PawAnim, new Vector3(1, 1, 1), 1.1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() =>
