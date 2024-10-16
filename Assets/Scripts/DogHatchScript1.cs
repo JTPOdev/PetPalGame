@@ -60,7 +60,7 @@ public class DogHatchScript : MonoBehaviour
             }
             if (ClickCounter == 0)
             {
-                AudioManager.instance.Play("OpenCelebrate");
+                // AudioManager.instance.Play("OpenCelebrate");
                 AudioManager.instance.Stop("HomeBGaudio");
                 PawAnim.gameObject.SetActive(true);
                 LeanTween.scale(PawAnim, Vector3.zero, 0f);

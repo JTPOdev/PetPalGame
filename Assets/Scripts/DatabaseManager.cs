@@ -27,7 +27,7 @@ public class DatabaseManager : MonoBehaviour
 
     IEnumerator GetName()
 {
-    using (UnityWebRequest www = UnityWebRequest.Get("http://localhost/petpalgame/GetName.php"))
+    using (UnityWebRequest www = UnityWebRequest.Get("http://localhost/petpal/progress.php"))
     {
         yield return www.SendWebRequest();
 
