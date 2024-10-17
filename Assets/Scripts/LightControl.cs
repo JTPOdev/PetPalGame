@@ -3,27 +3,26 @@ using UnityEngine.UI;
 
 public class LightControl : MonoBehaviour
 {
-    public Sprite lightOnSprite;  // Light ON image
-    public Sprite lightOffSprite; // Light OFF image
-    public Sprite switchUpSprite; // Switch UP image
-    public Sprite switchDownSprite; // Switch DOWN image
+    public Sprite lightOnSprite;  
+    public Sprite lightOffSprite; 
+    public Sprite switchUpSprite; 
+    public Sprite switchDownSprite; 
 
-    public Image lightBulb;  // Reference to LightBulb UI Image
-    public Image lightSwitch;  // Reference to LightSwitch UI Image
-    public GameObject darkOverlay;  // Reference to the dark overlay object
-    public GameObject dogAwake;  // Awake dog image
-    public GameObject dogSleep;  // Sleeping dog image
+    public Image lightBulb;  
+    public Image lightSwitch;  
+    public GameObject darkOverlay;  
+    public GameObject dogAwake;  
+    public GameObject dogSleep;  
     public GameObject backButton;
 
-    private bool isLightOn = true;  // Track the light state
-
+    private bool isLightOn = true;  
     void Start()
     {
         AudioManager.instance.Play("NightBGaudio");
     }
     public void ToggleLight()
     {
-        isLightOn = !isLightOn;  // Toggle the light state
+        isLightOn = !isLightOn;  
         UpdateObjects();
     }
 
@@ -31,10 +30,10 @@ public class LightControl : MonoBehaviour
     {
         if (isLightOn)
         {
-            // Light ON state
+            
             lightBulb.sprite = lightOnSprite;
             lightSwitch.sprite = switchUpSprite;
-            darkOverlay.SetActive(false);  // Hide the dark overlay
+            darkOverlay.SetActive(false);  
             dogAwake.SetActive(true);
             dogSleep.SetActive(false);
             backButton.SetActive(true);
@@ -42,10 +41,10 @@ public class LightControl : MonoBehaviour
         }
         else
         {
-            // Light OFF state
+            
             lightBulb.sprite = lightOffSprite;
             lightSwitch.sprite = switchDownSprite;
-            darkOverlay.SetActive(true);  // Show the dark overlay
+            darkOverlay.SetActive(true);  
             dogAwake.SetActive(false);
             dogSleep.SetActive(true);
             backButton.SetActive(false);
