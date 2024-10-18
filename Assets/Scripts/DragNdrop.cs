@@ -26,7 +26,7 @@ public class DragNdrop : MonoBehaviour
     {
         if (!inUse)//cant be dragged when it has collided the image
         {
-            AudioManager.instance.Play("Grab");
+            // AudioManager.instance.Play("Grab");
             startDragging = true; // if mouse or tap collided, dragging is true
         }
     }

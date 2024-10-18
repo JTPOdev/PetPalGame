@@ -3,7 +3,7 @@ using UnityEngine;
 public class SceneData : MonoBehaviour
 {
     public static int home = 0;
-    public static int name  = 1;
+    public static int namescene  = 1;
     public static int eggselect = 2;
     public static int egghatchcat = 3;
     public static int egghatchdog = 4;

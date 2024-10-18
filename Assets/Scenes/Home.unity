@@ -3106,7 +3106,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3341847238735226507}
         m_TargetAssemblyTypeName: PawScript, Assembly-CSharp
-        m_MethodName: openEggSelect
+        m_MethodName: openNameScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5185,10 +5185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4d9127612ea7846a8e74e441444722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BGMusicSlider: {fileID: 841152142}
-  SFXMusicSlider: {fileID: 655903247}
-  BGmixer: {fileID: 24100000, guid: 5bb152b238eb6444dacd4cc9aec28900, type: 2}
-  SFXmixer: {fileID: 24100000, guid: 144d474cf1592724cafd2f6a047e43e1, type: 2}
 --- !u!1 &2118378754
 GameObject:
   m_ObjectHideFlags: 0
