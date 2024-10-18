@@ -16,7 +16,7 @@ public class DatabaseManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            Debug.LogError("mali teh");
         }
     }
 
@@ -26,21 +26,43 @@ public class DatabaseManager : MonoBehaviour
     }
 
     IEnumerator GetName()
-{
-    using (UnityWebRequest www = UnityWebRequest.Get("http://localhost/petpalgame/GetName.php"))
     {
-        yield return www.SendWebRequest();
+        using (UnityWebRequest www = UnityWebRequest.Get("http://localhost/petpalgame/GetName.php"))
+        {
+            yield return www.SendWebRequest();
 
-        if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
-        {
-            Debug.LogError("Error: " + www.error);
-        }
-        else
-        {
-            Debug.Log("Response: " + www.downloadHandler.text);
+            if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.LogError("Error: " + www.error);
+            }
+            else
+            {
+                Debug.Log("Response: " + www.downloadHandler.text);
+            }
         }
     }
-}
+
+    public IEnumerator AddPet(string petName)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("name", petName);
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/petpalgame/AddPet.php", form))
+        {
+            yield return www.SendWebRequest();
+
+               
+            Debug.Log("Response Code: " + www.responseCode);
+            if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
+            {
+                    Debug.LogError("Error while adding pet: " + www.error);
+            }
+            else
+            {
+                    Debug.Log("Pet added successfully: " + www.downloadHandler.text);
+            }
+        }
+    }
 
 
     [System.Serializable]

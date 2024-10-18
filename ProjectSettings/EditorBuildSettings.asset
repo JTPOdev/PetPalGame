@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Home.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
   - enabled: 1
+    path: Assets/Scenes/Name.unity
+    guid: 2786bd15832dfac4bb185c41960d7817
+  - enabled: 1
     path: Assets/Scenes/EggSelect.unity
     guid: 9edc47d4892587c48a8e955332a2d931
   - enabled: 1

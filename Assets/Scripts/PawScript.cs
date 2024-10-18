@@ -32,6 +32,17 @@ public class PawScript : MonoBehaviour
         });
     }
 
+    public void openName()
+    {
+        // AudioManager.instance.Play("ButtonPressed");
+        PawAnim.gameObject.SetActive(true);
+        LeanTween.scale(PawAnim, Vector3.zero, 0f);
+        LeanTween.scale(PawAnim, new Vector3(1, 1, 1), 1.1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() =>
+        {
+            SceneManager.LoadScene(SceneData.name);
+        });
+    }
+
     public void openEggSelect()
     {
         // AudioManager.instance.Play("ButtonPressed");
