@@ -16,7 +16,7 @@ public class DatabaseManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("mali teh");
+            Debug.LogError("Instance already exists");
         }
     }
 
@@ -27,8 +27,11 @@ public class DatabaseManager : MonoBehaviour
 
     public IEnumerator GetName()
     {
-        using (UnityWebRequest www = UnityWebRequest.Get("http://172.20.10.3/petpalgame/GetName.php"))
+        using (UnityWebRequest www = UnityWebRequest.Get("https://192.168.100.126/petpalgame/GetName.php"))
         {
+            // Bypass SSL certificate validation
+            www.certificateHandler = new BypassCertificateHandler();
+            
             yield return www.SendWebRequest();
 
             if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
@@ -47,23 +50,34 @@ public class DatabaseManager : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("name", petName);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://172.20.10.3/petpalgame/AddPet.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("https://192.168.100.126/petpalgame/AddPet.php", form))
         {
-            yield return www.SendWebRequest();
+            // Bypass SSL certificate validation
+            www.certificateHandler = new BypassCertificateHandler();
 
+            yield return www.SendWebRequest();
                
             Debug.Log("Response Code: " + www.responseCode);
             if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
             {
-                    Debug.LogError("Error while adding pet: " + www.error);
+                Debug.LogError("Error while adding pet: " + www.error);
             }
             else
             {
-                    Debug.Log("Pet added successfully: " + www.downloadHandler.text);
+                Debug.Log("Pet added successfully: " + www.downloadHandler.text);
             }
         }
     }
 
+    // CertificateHandler class to bypass SSL validation (for development only)
+    public class BypassCertificateHandler : CertificateHandler
+    {
+        protected override bool ValidateCertificate(byte[] certificateData)
+        {
+            // Always return true to bypass SSL validation (for development only)
+            return true;
+        }
+    }
 
     [System.Serializable]
     public class PetNameList

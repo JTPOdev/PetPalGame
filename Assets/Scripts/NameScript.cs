@@ -48,7 +48,7 @@ public class NameScript : MonoBehaviour
 
     public IEnumerator GetName()
     {
-        using (UnityWebRequest www = UnityWebRequest.Get("http://172.20.10.3/petpalgame/GetName.php"))
+        using (UnityWebRequest www = UnityWebRequest.Get("https://192.168.100.126/petpalgame/GetName.php"))
         {
             yield return www.SendWebRequest();
 
@@ -59,6 +59,28 @@ public class NameScript : MonoBehaviour
             else
             {
                 Debug.Log("Response: " + www.downloadHandler.text);
+            }
+        }
+    }
+
+    public IEnumerator AddPet(string petName)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("name", petName);
+
+        using (UnityWebRequest www = UnityWebRequest.Post("https://192.168.100.126/petpalgame/AddPet.php", form))
+        {
+            yield return www.SendWebRequest();
+
+               
+            Debug.Log("Response Code: " + www.responseCode);
+            if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
+            {
+                    Debug.LogError("Error while adding pet: " + www.error);
+            }
+            else
+            {
+                    Debug.Log("Pet added successfully: " + www.downloadHandler.text);
             }
         }
     }
