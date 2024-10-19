@@ -42,5 +42,7 @@ EditorBuildSettings:
     path: Assets/Scenes/DogBed.unity
     guid: 35ed572112c83e24ca81dcd96aef1d51
   m_configObjects:
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: c9a1dff5efb81c64cb2ebf035733a44c, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 5315ff5cdc069ec468d6605f740d9e82, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 3c4bc2180ea7d5d4c8c5b8a8dcdef688, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: caa1125563a8c5e4d833515f6ce71bf4, type: 2}
