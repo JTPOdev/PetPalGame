@@ -8,11 +8,11 @@ public class BubbleManager : MonoBehaviour
     public List<GameObject> bubbleImages; 
     public Button takeBathButton;         
     private float respawnTime = 10f;      
-    private float autoDisappearTime = 20f; 
-    private float floatHeight = 3f;      
+    private float autoDisappearTime = 25f; 
+    private float floatHeight = 4f;      
     private float floatSpeed = 1.5f;        
-    private float waveAmplitude = 2f;    
-    private float waveFrequency = 2f;     
+    private float waveAmplitude = 9f;    
+    private float waveFrequency = 7f;     
 
     void Start()
     {
