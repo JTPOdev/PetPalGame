@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DragNdrop : MonoBehaviour
 {
+    public TMPro.TMP_Text countdownText;
+    public int countdownTime;
     //private Animator anim;
     bool startDragging, inUse;
     Vector2 startPos, slotPos;
@@ -26,14 +28,14 @@ public class DragNdrop : MonoBehaviour
     {
         if (!inUse)//cant be dragged when it has collided the image
         {
-            // AudioManager.instance.Play("Grab");
+            AudioManager.instance.Play("Grab");
             startDragging = true; // if mouse or tap collided, dragging is true
         }
     }
 
     public void StopDrag()
     {
-        startDragging = false; // if mouse or tap stops colliding, dragging is false
+        startDragging = false; // if mouse or  tap stops colliding, dragging is false
 
         if (inUse)
         {
@@ -51,9 +53,10 @@ public class DragNdrop : MonoBehaviour
         if (collision.CompareTag("Mouth"))//tag for image box
         {
             inUse = true;//holding the image
-            //anim.SetTrigger("TRcrack");
+            //anim.SetTrigger("DogFoodAte");
             slotPos = collision.transform.position;//collider for box position
-            
+            StartCoroutine(CountDownToStart());
+
 
         }
     }
@@ -66,4 +69,39 @@ public class DragNdrop : MonoBehaviour
 
         }
     }
+
+    IEnumerator CountDownToStart()
+    {
+        while(countdownTime > 0)
+        {
+            inUse = true;
+            yield return new WaitForSeconds(1f);
+            countdownTime--;
+        }
+        yield return new WaitForSeconds(1f);
+        inUse = false;
+        transform.position = startPos;
+
+    }
+
+    //IEnumerator CountDownToStart()
+    //{
+    //    while (countdownTime > 0)
+    //    {
+    //        inUse = true;
+    //        //countdownText.text = countdownTime.ToString();
+    //        yield return new WaitForSeconds(1f);
+    //        countdownTime--;
+    //    }
+
+    //    //countdownText.text = "BackToPos!";
+
+
+    //    yield return new WaitForSeconds(1f);
+
+    //    //countdownText.gameObject.SetActive(false);
+    //    inUse = false;
+    //    transform.position = startPos;
+
+    //}
 }

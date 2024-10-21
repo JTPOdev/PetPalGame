@@ -13,6 +13,8 @@ public class SceneData : MonoBehaviour
     public static int dogplayground = 8;
     public static int catbed = 9;
     public static int dogbed = 10;
+    public static int catbath= 11;
+    public static int dogbath= 12;
 
 
 }

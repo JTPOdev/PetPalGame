@@ -1,20 +1,18 @@
 using UnityEngine;
 using TMPro;
-using System.Text.RegularExpressions;
 using UnityEngine.SceneManagement;
-using System.Collections;
-using UnityEngine.Networking;
 
 public class NameScript : MonoBehaviour
 {
-    public TMP_InputField nameInputField;   
-    public TextMeshProUGUI nameDisplayText;      
+    public TMP_InputField nameInputField;
+    public TextMeshProUGUI nameDisplayText;
 
-    private const string PetNameKey = "PetName";  
+    private const string PetNameKey = "PetName";
+    private const int MaxNameLength = 10;
 
     void Start()
     {
-        nameDisplayText.text = "";            
+        nameDisplayText.text = "";
         nameInputField.text = "";
     }
 
@@ -22,66 +20,37 @@ public class NameScript : MonoBehaviour
     {
         Debug.Log("OnSubmitName called");
         Debug.Log("Is NameInput active: " + nameInputField.gameObject.activeSelf);
-        
+
         string petName = nameInputField.text.Trim();
 
-        if (!string.IsNullOrEmpty(petName) && Regex.IsMatch(petName, @"^[a-zA-Z]+$"))
+        if (!string.IsNullOrEmpty(petName))
         {
-            PlayerPrefs.SetString(PetNameKey, petName);
-            PlayerPrefs.Save();
+            if (petName.Length <= MaxNameLength)
+            {
+                PlayerPrefs.SetString(PetNameKey, petName);
+                PlayerPrefs.Save();
 
-            Debug.Log("Starting coroutine to add pet.");
-            StartCoroutine(DatabaseManager.Instance.AddPet(petName));
+                Debug.Log("Starting coroutine to add pet.");
+                StartCoroutine(DatabaseManager.Instance.AddPet(petName));
 
-            nameDisplayText.text = $"{petName}";  
-            nameInputField.text = ""; 
+                nameDisplayText.text = $"{petName}";
+                nameInputField.text = "";
 
-            SceneManager.LoadScene(SceneData.eggselect);
+                SceneManager.LoadScene(SceneData.eggselect);
+            }
+            else
+            {
+                nameDisplayText.text = "Name cannot exceed 10 letters.";
+                nameInputField.text = "";
+                nameInputField.Select();
+            }
         }
         else
         {
-            nameDisplayText.text = "Please enter a valid name using letters only.";
-            nameInputField.text = ""; 
+            nameDisplayText.text = "Please enter a valid name.";
+            nameInputField.text = "";
             nameInputField.Select();
         }
     }
 
-    public IEnumerator GetName()
-    {
-        using (UnityWebRequest www = UnityWebRequest.Get("https://192.168.100.126/petpalgame/GetName.php"))
-        {
-            yield return www.SendWebRequest();
-
-            if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
-            {
-                Debug.LogError("Error: " + www.error);
-            }
-            else
-            {
-                Debug.Log("Response: " + www.downloadHandler.text);
-            }
-        }
-    }
-
-    public IEnumerator AddPet(string petName)
-    {
-        WWWForm form = new WWWForm();
-        form.AddField("name", petName);
-
-        using (UnityWebRequest www = UnityWebRequest.Post("https://192.168.100.126/petpalgame/AddPet.php", form))
-        {
-            yield return www.SendWebRequest();
-
-               
-            Debug.Log("Response Code: " + www.responseCode);
-            if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
-            {
-                    Debug.LogError("Error while adding pet: " + www.error);
-            }
-            else
-            {
-                    Debug.Log("Pet added successfully: " + www.downloadHandler.text);
-            }
-        }
-    }
 }

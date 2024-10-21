@@ -41,6 +41,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DogBed.unity
     guid: 35ed572112c83e24ca81dcd96aef1d51
+  - enabled: 1
+    path: Assets/Scenes/CathBath.unity
+    guid: ad2ce233cc9728840aa09f2771c4c842
+  - enabled: 1
+    path: Assets/Scenes/DogBath.unity
+    guid: f282984208c672d4180db2a797ffa0df
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: c9a1dff5efb81c64cb2ebf035733a44c, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 5315ff5cdc069ec468d6605f740d9e82, type: 2}

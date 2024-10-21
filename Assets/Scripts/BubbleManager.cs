@@ -29,7 +29,6 @@ public class BubbleManager : MonoBehaviour
     
     void StartBath()
     {
-        
         StartCoroutine(ShowBubblesWithDelay());
     }
 
@@ -149,7 +148,7 @@ public class BubbleManager : MonoBehaviour
             yield return null; 
         }
 
-        
+        AudioManager.instance.Play("BubblePop");
         bubble.transform.localScale = originalScale;
 
         bubble.SetActive(false); 
