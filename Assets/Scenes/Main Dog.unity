@@ -801,6 +801,7 @@ RectTransform:
   - {fileID: 7559746391736277251}
   - {fileID: 5269423010738421988}
   - {fileID: 2976780040584105815}
+  - {fileID: 9036152099717968854}
   m_Father: {fileID: 9194017255026516099}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1716,7 +1717,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2cf90b8d5c3ea8a4282f63d45dd64de8, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_sharedMaterial: {fileID: -8095819620991548264, guid: 2cf90b8d5c3ea8a4282f63d45dd64de8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1802,7 +1803,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540cae712ce37484f8e49d8cf70dfc8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerCoins: 1000
   coinText1: {fileID: 9071676175824658966}
   coinText2: {fileID: 905643034222260891}
 --- !u!222 &1004177530859996156
@@ -2891,7 +2891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be504c27a522cbe4d88b7ebe53a07080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinScript: {fileID: 7237508737070900345}
+  coinScript: {fileID: 9036152099717968855}
   itemPurchased: 0
   hungerLevel: 20
   hungerRestoreAmount: 20
@@ -3994,7 +3994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be504c27a522cbe4d88b7ebe53a07080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinScript: {fileID: 7237508737070900345}
+  coinScript: {fileID: 9036152099717968855}
   itemPurchased: 0
   hungerLevel: 10
   hungerRestoreAmount: 20
@@ -5288,21 +5288,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3830077377711179666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7660853094221061602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 540cae712ce37484f8e49d8cf70dfc8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerCoins: 1000
-  coinText1: {fileID: 9071676175824658966}
-  coinText2: {fileID: 905643034222260891}
 --- !u!1 &3885747790888562789
 GameObject:
   m_ObjectHideFlags: 0
@@ -6510,7 +6495,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540cae712ce37484f8e49d8cf70dfc8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerCoins: 1000
   coinText1: {fileID: 9071676175824658966}
   coinText2: {fileID: 905643034222260891}
 --- !u!222 &4667566591773493554
@@ -7163,7 +7147,7 @@ GameObject:
   - component: {fileID: 9036152099717968854}
   - component: {fileID: 1004177530859996156}
   - component: {fileID: 1521802212141516747}
-  - component: {fileID: 7237508737070900345}
+  - component: {fileID: 9036152099717968855}
   m_Layer: 5
   m_Name: Coin 2
   m_TagString: Untagged
@@ -8204,11 +8188,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 467372c2096968741a27b30add4dc10c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bathSlider: {fileID: 4375702358597085850}
-  funSlider: {fileID: 595733592865610428}
-  thirstSlider: {fileID: 732613868994254475}
-  hungerSlider: {fileID: 2967201645743741108}
-  energySlider: {fileID: 3763095056031441708}
+  bathBar: {fileID: 0}
+  funBar: {fileID: 0}
+  thirstBar: {fileID: 0}
+  hungerBar: {fileID: 0}
+  energyBar: {fileID: 0}
 --- !u!1 &6243358341497157284
 GameObject:
   m_ObjectHideFlags: 0
@@ -8240,7 +8224,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540cae712ce37484f8e49d8cf70dfc8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerCoins: 0
   coinText1: {fileID: 9071676175824658966}
   coinText2: {fileID: 905643034222260891}
 --- !u!224 &6276191888226791196
@@ -8536,7 +8519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be504c27a522cbe4d88b7ebe53a07080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinScript: {fileID: 7237508737070900345}
+  coinScript: {fileID: 9036152099717968855}
   itemPurchased: 0
   hungerLevel: 20
   hungerRestoreAmount: 20
@@ -9133,21 +9116,6 @@ CircleCollider2D:
   m_Offset: {x: 1.2582245, y: -1.2582397}
   serializedVersion: 2
   m_Radius: 133.34332
---- !u!114 &7237508737070900345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5285261098350575796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 540cae712ce37484f8e49d8cf70dfc8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerCoins: 1000
-  coinText1: {fileID: 9071676175824658966}
-  coinText2: {fileID: 905643034222260891}
 --- !u!222 &7276759961843866666
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9853,7 +9821,7 @@ GameObject:
   - component: {fileID: 4929659191741526674}
   - component: {fileID: 8308829858269494860}
   - component: {fileID: 7277405568783795344}
-  - component: {fileID: 3830077377711179666}
+  - component: {fileID: 8308829858269494861}
   m_Layer: 5
   m_Name: Coin 1
   m_TagString: Untagged
@@ -10399,6 +10367,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7660853094221061602}
   m_CullTransparentMesh: 1
+--- !u!114 &8308829858269494861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7660853094221061602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 540cae712ce37484f8e49d8cf70dfc8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinText1: {fileID: 9071676175824658966}
+  coinText2: {fileID: 905643034222260891}
 --- !u!224 &8346370522767357103
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10990,18 +10972,32 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5285261098350575796}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.38053998}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.27258998, y: 0.27258998, z: 0.27258998}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5774304152415558376}
-  m_Father: {fileID: 9194017255026516099}
+  m_Father: {fileID: 113926586633670456}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 154.92163, y: 1210.3359}
+  m_AnchoredPosition: {x: 265.92188, y: 1171.3438}
   m_SizeDelta: {x: 199.0355, y: 199.0351}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9036152099717968855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5285261098350575796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 540cae712ce37484f8e49d8cf70dfc8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinText1: {fileID: 9071676175824658966}
+  coinText2: {fileID: 905643034222260891}
 --- !u!222 &9045864093344085182
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11151,7 +11147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540cae712ce37484f8e49d8cf70dfc8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerCoins: 0
   coinText1: {fileID: 9071676175824658966}
   coinText2: {fileID: 905643034222260891}
 --- !u!114 &9123860993767312492
@@ -11294,10 +11289,9 @@ Transform:
   m_Children:
   - {fileID: 1047658406586042782}
   - {fileID: 5328521272085449326}
+  - {fileID: 5728248861150966825}
   - {fileID: 113926586633670456}
   - {fileID: 1752809469286577680}
-  - {fileID: 5728248861150966825}
-  - {fileID: 9036152099717968854}
   m_Father: {fileID: 4159811128417489128}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9197020885118354783

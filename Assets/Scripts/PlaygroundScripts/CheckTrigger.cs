@@ -12,7 +12,10 @@ public class CheckTrigger : MonoBehaviour
             // Add Score ++
             AudioManager.instance.Play("CoinCollect");
             GameManager.Instance.AddScore();
+
+            // Claims the coins
             Destroy(other.gameObject, 0.02f);
+
             
         }
 

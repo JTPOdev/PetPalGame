@@ -15,11 +15,19 @@ public class GameManager : MonoBehaviour
     public int countdownTime;
 
     int coinRandomizer;
-    int coinAmount;
+    public static int coinAmount;
+    public static int coinStore;
     int score;
 
+    [Header("Text")]
+    public TMPro.TMP_Text storeCoinText;
     public TMPro.TMP_Text coinAmountText;
     public TMPro.TMP_Text ScoreText;
+    public TMPro.TMP_Text coinCurrentText;
+    public TMPro.TMP_Text currentText;
+    public TMPro.TMP_Text highScoreText;
+
+    [Header("Pages and Image")]
     public GameObject GameOverPannel;
     public GameObject CountdownPage;
     public GameObject Player;
@@ -28,16 +36,18 @@ public class GameManager : MonoBehaviour
     public GameObject JungleT3;
     public GameObject YellowBush;
     public GameObject Brick;
+
+    [Header("Objects")]
     public GameObject Wall;
     public GameObject Spike;
     public GameObject Spike2;
     public GameObject Coin;
-    public TMPro.TMP_Text coinCurrentText;
-    public TMPro.TMP_Text currentText;
-    public TMPro.TMP_Text highScoreText;
+
+    [Header("Buttons")]
     public Button catRestartButton;
     public Button dogRestartButton;
 
+    [Header("Others")]
     public Camera mainCam;
     public Image backgroundImage;
     private int randomIndex;
@@ -54,6 +64,8 @@ public class GameManager : MonoBehaviour
         randomIndex = Random.Range(0, colorToChange.Length);
         ChangeColor();
 
+        // Grabs the coins and store it so it doesnt get destroyed
+        coinStore = PlayerPrefs.GetInt("StoringCoins", 0);
     }
 
     private void Start()
@@ -88,7 +100,11 @@ public class GameManager : MonoBehaviour
 
         //GameScore & Coin Highest PlayePrefs
         highScoreText.text = PlayerPrefs.GetInt("HighScore").ToString();
+    }
 
+    void Update()
+    {
+        storeCoinText.text = coinStore.ToString();
     }
 
     private void BeginGame()
@@ -125,6 +141,7 @@ public class GameManager : MonoBehaviour
         randomIndex = Random.Range(0, colorToChange.Length);
         ApplyColor();
 
+
     }
 
     public void GameOver()
@@ -140,17 +157,17 @@ public class GameManager : MonoBehaviour
         //Display Current Coin Collected
         PlayerPrefs.SetInt("CoinScore", coinAmount);
 
+        // Stored coins + New claimed Coins, then sets the new value
+        coinStore += coinAmount;
+        PlayerPrefs.SetInt("StoringCoins", coinStore);
+
+        // Grabs the values
         coinCurrentText.text = PlayerPrefs.GetInt("CoinScore").ToString();
         currentText.text = PlayerPrefs.GetInt("Score").ToString();
         highScoreText.text = PlayerPrefs.GetInt("HighScore").ToString();
 
 
         //Destroy Object when GameOver
-        //JungleT1.SetActive(false);
-        //JungleT2.SetActive(false);
-        //JungleT3.SetActive(false);
-        //YellowBush.SetActive(false);
-        //Brick.SetActive(false);
         Wall.SetActive(false);
         Spike.SetActive(false);
         Spike2.SetActive(false);
@@ -189,7 +206,6 @@ public class GameManager : MonoBehaviour
     public void ChangeColor()
     {
         mainCam.backgroundColor = colorToChange[randomIndex];
-        //backgroundImage.color = colorToChange[randomIndex];
     }
 
     IEnumerator CountDownToStart()

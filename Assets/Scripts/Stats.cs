@@ -45,6 +45,7 @@ public class Stats : MonoBehaviour
             Debug.Log("Destroying duplicate Stats instance.");
             Destroy(gameObject); 
         }
+
     }
 
 
