@@ -654,21 +654,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &108360439283078707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6112096161652151532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 540cae712ce37484f8e49d8cf70dfc8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerCoins: 1000
-  coinText1: {fileID: 0}
-  coinText2: {fileID: 0}
 --- !u!222 &124382216184845521
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1705,7 +1690,7 @@ GameObject:
   - component: {fileID: 9079330880821459488}
   - component: {fileID: 7104237923527519409}
   - component: {fileID: 9192773922569961566}
-  - component: {fileID: 7483375615276832652}
+  - component: {fileID: 9192773922569961567}
   m_Layer: 5
   m_Name: Coin Text 1
   m_TagString: Untagged
@@ -1735,7 +1720,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2cf90b8d5c3ea8a4282f63d45dd64de8, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1766,7 +1751,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 1024
   m_textAlignment: 65535
@@ -1799,7 +1784,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1081266313218013368
@@ -3375,8 +3360,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: enter name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2cf90b8d5c3ea8a4282f63d45dd64de8, type: 2}
+  m_sharedMaterial: {fileID: -8095819620991548264, guid: 2cf90b8d5c3ea8a4282f63d45dd64de8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3406,7 +3391,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 1024
   m_textAlignment: 65535
@@ -7662,7 +7647,7 @@ GameObject:
   - component: {fileID: 5932412024807766176}
   - component: {fileID: 253357769729024319}
   - component: {fileID: 1073870796603592915}
-  - component: {fileID: 108360439283078707}
+  - component: {fileID: 6112096161652151533}
   m_Layer: 5
   m_Name: Coin Text 2
   m_TagString: Untagged
@@ -7670,6 +7655,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6112096161652151533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6112096161652151532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 540cae712ce37484f8e49d8cf70dfc8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerCoins: 0
+  coinText1: {fileID: 9192773922569961566}
+  coinText2: {fileID: 1073870796603592915}
 --- !u!1 &6120667573155107478
 GameObject:
   m_ObjectHideFlags: 0
@@ -9209,21 +9209,6 @@ RectTransform:
   m_AnchoredPosition: {x: 4, y: -4}
   m_SizeDelta: {x: 275, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7483375615276832652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1039409363617687527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 540cae712ce37484f8e49d8cf70dfc8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerCoins: 1000
-  coinText1: {fileID: 9192773922569961566}
-  coinText2: {fileID: 1073870796603592915}
 --- !u!1 &7504838706530451370
 GameObject:
   m_ObjectHideFlags: 0
@@ -10820,8 +10805,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2cf90b8d5c3ea8a4282f63d45dd64de8, type: 2}
+  m_sharedMaterial: {fileID: -8095819620991548264, guid: 2cf90b8d5c3ea8a4282f63d45dd64de8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10851,7 +10836,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 1024
   m_textAlignment: 65535
@@ -10887,6 +10872,21 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &9192773922569961567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039409363617687527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 540cae712ce37484f8e49d8cf70dfc8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerCoins: 0
+  coinText1: {fileID: 9192773922569961566}
+  coinText2: {fileID: 1073870796603592915}
 --- !u!95 &9209191788710988439
 Animator:
   serializedVersion: 5
