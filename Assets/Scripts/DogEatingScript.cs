@@ -10,6 +10,8 @@ public class DogEatingScript : MonoBehaviour
     private Animator dogAnim;
 
     [Header("Page")]
+    public GameObject doghungry;
+    public GameObject dogidle;
     public GameObject exitButton;
     public GameObject table;
     public GameObject path;
@@ -73,8 +75,13 @@ public class DogEatingScript : MonoBehaviour
         milkDrinkImg.gameObject.SetActive(false);
         milkshakeDrinkImg.gameObject.SetActive(false);
 
+        exitButton.SetActive(true);
+
         yield return new WaitForSeconds(0.5f);
         exitButton.SetActive(true);
+        doghungry.SetActive(false);
+        dogidle.SetActive(true);
+
 
     }
 }

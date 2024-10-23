@@ -47,6 +47,7 @@ public class NameScript : MonoBehaviour
         }
         else
         {
+            AudioManager.instance.Play("Wrong");
             nameDisplayText.text = "Please enter a valid name.";
             nameInputField.text = "";
             nameInputField.Select();

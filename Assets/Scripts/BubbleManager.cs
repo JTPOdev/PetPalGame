@@ -37,7 +37,7 @@ public class BubbleManager : MonoBehaviour
     {
         foreach (GameObject bubble in bubbleImages)
         {
-            
+            AudioManager.instance.Play("Grab");
             yield return StartCoroutine(AnimateBubbleAppearance(bubble));
             StartCoroutine(AutoHideBubble(bubble)); 
             StartCoroutine(FloatBubble(bubble)); 
@@ -113,6 +113,7 @@ public class BubbleManager : MonoBehaviour
     
     public void OnBubbleClicked(GameObject bubble)
     {
+        AudioManager.instance.Play("Pop");
         StartCoroutine(AnimateBubblePop(bubble)); 
     }
 
@@ -153,12 +154,14 @@ public class BubbleManager : MonoBehaviour
 
         bubble.SetActive(false); 
         StartCoroutine(RespawnBubble(bubble)); 
+
     }
 
     
     private IEnumerator RespawnBubble(GameObject bubble)
     {
-        yield return new WaitForSeconds(respawnTime); 
+        yield return new WaitForSeconds(respawnTime);
+        AudioManager.instance.Play("Grab");
         yield return StartCoroutine(AnimateBubbleAppearance(bubble)); 
         StartCoroutine(AutoHideBubble(bubble)); 
     }

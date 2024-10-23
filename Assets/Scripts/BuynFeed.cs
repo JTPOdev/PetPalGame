@@ -149,11 +149,13 @@ public class BuynFeed : MonoBehaviour
 
         if (coinScript.SpendCoins(selectedFoodCost))  // Deduct the selected food cost from coins
         {
+            AudioManager.instance.Play("ButtonPressed");
             itemPurchased = true;
             Debug.Log("Food purchased for: " + selectedFoodCost + " coins.");
         }
         else
         {
+            AudioManager.instance.Play("Wrong");
             Debug.Log("Not enough coins to purchase the item.");
         }
 
@@ -174,7 +176,7 @@ public class BuynFeed : MonoBehaviour
             hungerLevel = Mathf.Min(hungerLevel + hungerRestoreAmount, 100);  // Restore hunger
             Debug.Log("Pet fed. Hunger level: " + hungerLevel);
             itemPurchased = false;
-
+            AudioManager.instance.Play("ButtonPressed");
             mainPage.SetActive(true);  //  Opens mainpage scene
             storePage.SetActive(false);  //  Closes storepage scene
             tablePage.SetActive(true);
@@ -182,10 +184,12 @@ public class BuynFeed : MonoBehaviour
         }
         else if (hungerLevel >= 100)
         {
+            AudioManager.instance.Play("Wrong");
             Debug.Log("Hunger level is already at maximum!");
         }
         else
         {
+            AudioManager.instance.Play("Wrong");
             Debug.Log("You need to purchase food first.");
         }
     }
@@ -203,7 +207,7 @@ public class BuynFeed : MonoBehaviour
             hungerLevel = Mathf.Min(hungerLevel + hungerRestoreAmount, 100);  // Restore hunger
             Debug.Log("Pet fed. Hunger level: " + hungerLevel);
             itemPurchased = false;
-
+            AudioManager.instance.Play("ButtonPressed");
             mainPage.SetActive(true);  //  Opens mainpage scene
             storePage.SetActive(false);  //  Closes storepage scene
             tablePage.SetActive(true);
@@ -212,10 +216,12 @@ public class BuynFeed : MonoBehaviour
         }
         else if (hungerLevel >= 100)
         {
+            AudioManager.instance.Play("Wrong");
             Debug.Log("Hunger level is already at maximum!");
         }
         else
         {
+            AudioManager.instance.Play("Wrong");
             Debug.Log("You need to purchase food first.");
         }
     }
@@ -233,7 +239,7 @@ public class BuynFeed : MonoBehaviour
             hungerLevel = Mathf.Min(hungerLevel + hungerRestoreAmount, 100);  // Restore hunger
             Debug.Log("Pet fed. Hunger level: " + hungerLevel);
             itemPurchased = false;
-
+            AudioManager.instance.Play("ButtonPressed");
             mainPage.SetActive(true);  //  Opens mainpage scene
             storePage.SetActive(false);  //  Closes storepage scene
             tablePage.SetActive(true);
@@ -242,10 +248,12 @@ public class BuynFeed : MonoBehaviour
         }
         else if (hungerLevel >= 100)
         {
+            AudioManager.instance.Play("Wrong");
             Debug.Log("Hunger level is already at maximum!");
         }
         else
         {
+            AudioManager.instance.Play("Wrong");
             Debug.Log("You need to purchase food first.");
         }
     }
@@ -263,7 +271,7 @@ public class BuynFeed : MonoBehaviour
             hungerLevel = Mathf.Min(hungerLevel + hungerRestoreAmount, 100);  // Restore hunger
             Debug.Log("Pet fed. Hunger level: " + hungerLevel);
             itemPurchased = false;
-
+            AudioManager.instance.Play("ButtonPressed");
             mainPage.SetActive(true);  //  Opens mainpage scene
             storePage.SetActive(false);  //  Closes storepage scene
             tablePage.SetActive(true);
@@ -272,10 +280,12 @@ public class BuynFeed : MonoBehaviour
         }
         else if (hungerLevel >= 100)
         {
+            AudioManager.instance.Play("Wrong");
             Debug.Log("Hunger level is already at maximum!");
         }
         else
         {
+            AudioManager.instance.Play("Wrong");
             Debug.Log("You need to purchase food first.");
         }
     }
@@ -293,7 +303,7 @@ public class BuynFeed : MonoBehaviour
             hungerLevel = Mathf.Min(hungerLevel + hungerRestoreAmount, 100);  // Restore hunger
             Debug.Log("Pet fed. Hunger level: " + hungerLevel);
             itemPurchased = false;
-
+            AudioManager.instance.Play("ButtonPressed");
             mainPage.SetActive(true);  //  Opens mainpage scene
             storePage.SetActive(false);  //  Closes storepage scene
             tablePage.SetActive(true);
@@ -302,10 +312,12 @@ public class BuynFeed : MonoBehaviour
         }
         else if (hungerLevel >= 100)
         {
+            AudioManager.instance.Play("Wrong");
             Debug.Log("Hunger level is already at maximum!");
         }
         else
         {
+            AudioManager.instance.Play("Wrong");
             Debug.Log("You need to purchase food first.");
         }
     }
@@ -323,7 +335,7 @@ public class BuynFeed : MonoBehaviour
             hungerLevel = Mathf.Min(hungerLevel + hungerRestoreAmount, 100);  // Restore hunger
             Debug.Log("Pet fed. Hunger level: " + hungerLevel);
             itemPurchased = false;
-
+            AudioManager.instance.Play("ButtonPressed");
             mainPage.SetActive(true);  //  Opens mainpage scene
             storePage.SetActive(false);  //  Closes storepage scene
             tablePage.SetActive(true);
@@ -332,10 +344,12 @@ public class BuynFeed : MonoBehaviour
         }
         else if (hungerLevel >= 100)
         {
+            AudioManager.instance.Play("Wrong");
             Debug.Log("Hunger level is already at maximum!");
         }
         else
         {
+            AudioManager.instance.Play("Wrong");
             Debug.Log("You need to purchase food first.");
         }
     }
@@ -343,6 +357,7 @@ public class BuynFeed : MonoBehaviour
     // Activate Image
     public void FoodImage1()
     {
+        AudioManager.instance.Play("Selected");
         FoodImg1.SetActive(false);
         feedButtonFood1.gameObject.SetActive(true);
         feedButtonFood2.gameObject.SetActive(false);
@@ -354,6 +369,7 @@ public class BuynFeed : MonoBehaviour
 
     public void FoodImage2()
     {
+        AudioManager.instance.Play("Selected");
         FoodImg2.SetActive(false);
         feedButtonFood1.gameObject.SetActive(false);
         feedButtonFood2.gameObject.SetActive(true);
@@ -365,6 +381,7 @@ public class BuynFeed : MonoBehaviour
 
     public void FoodImage3()
     {
+        AudioManager.instance.Play("Selected");
         FoodImg3.SetActive(false);
         feedButtonFood1.gameObject.SetActive(false);
         feedButtonFood2.gameObject.SetActive(false);
@@ -376,6 +393,7 @@ public class BuynFeed : MonoBehaviour
 
     public void waterDrinkImage()
     {
+        AudioManager.instance.Play("Selected");
         waterDrinkImg.SetActive(false);
         feedButtonFood1.gameObject.SetActive(false);
         feedButtonFood2.gameObject.SetActive(false);
@@ -387,6 +405,7 @@ public class BuynFeed : MonoBehaviour
 
     public void milkDrinkImage()
     {
+        AudioManager.instance.Play("Selected");
         milkDrinkImg.SetActive(false);
         feedButtonFood1.gameObject.SetActive(false);
         feedButtonFood2.gameObject.SetActive(false);
@@ -398,6 +417,7 @@ public class BuynFeed : MonoBehaviour
 
     public void milkshakeDrinkImage()
     {
+        AudioManager.instance.Play("Selected");
         milkshakeDrinkImg.SetActive(false);
         feedButtonFood1.gameObject.SetActive(false);
         feedButtonFood2.gameObject.SetActive(false);

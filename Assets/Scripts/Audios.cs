@@ -39,4 +39,37 @@ public class Audios : MonoBehaviour
     {
         AudioManager.instance.Play("BubblePop");
     }
+
+    public void Ate1()
+    {
+        AudioManager.instance.Play("Ate 1");
+    }
+
+    public void Ate2()
+    {
+        AudioManager.instance.Play("Ate 2");
+    }
+
+    public void Ate3()
+    {
+        AudioManager.instance.Play("Ate 3");
+    }
+
+    public void Drink1()
+    {
+        AudioManager.instance.Play("Drink 1");
+        AudioManager.instance.Play("Drink 1");
+    }
+
+    public void Drink2()
+    {
+        AudioManager.instance.Play("Drink 2");
+        AudioManager.instance.Play("Drink 2");
+    }
+
+    public void Drink3()
+    {
+        AudioManager.instance.Play("Drink 3");
+        AudioManager.instance.Play("Drink 3");
+    }
 }

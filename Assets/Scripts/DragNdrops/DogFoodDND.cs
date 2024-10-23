@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DragNdrop : MonoBehaviour
+public class DogFoodDND : MonoBehaviour
 {
     public TMPro.TMP_Text countdownText;
     public int countdownTime;
-    //private Animator anim;
+    private Animator foodAnim;
+    public GameObject hungry;
+    public GameObject idle;
     bool startDragging, inUse;
     Vector2 startPos, slotPos;
 
     void Start()
     {
-        //anim = GetComponent<Animator>();
+        idle.SetActive(true);
+        foodAnim = GetComponent<Animator>();
         startPos = transform.position; //start position
     }
 
@@ -29,6 +32,8 @@ public class DragNdrop : MonoBehaviour
         if (!inUse)//cant be dragged when it has collided the image
         {
             AudioManager.instance.Play("Grab");
+            idle.SetActive(false);
+            hungry.SetActive(true);
             startDragging = true; // if mouse or tap collided, dragging is true
         }
     }
@@ -39,10 +44,13 @@ public class DragNdrop : MonoBehaviour
 
         if (inUse)
         {
+            hungry.SetActive(true);
             transform.position = slotPos;
         }
         else
         {
+            hungry.SetActive(false);
+            idle.SetActive(true);
             transform.position = startPos;//When image stop moving, it snaps back to original position
         }
 
@@ -53,7 +61,8 @@ public class DragNdrop : MonoBehaviour
         if (collision.CompareTag("Mouth"))//tag for image box
         {
             inUse = true;//holding the image
-            //anim.SetTrigger("DogFoodAte");
+            hungry.SetActive(true);
+            foodAnim.SetTrigger("CatFood Ate");
             slotPos = collision.transform.position;//collider for box position
             StartCoroutine(CountDownToStart());
 
@@ -65,6 +74,7 @@ public class DragNdrop : MonoBehaviour
     {
         if (collision.CompareTag("Mouth"))//tag for image box
         {
+            foodAnim.SetTrigger("CatFood Idle");
             inUse = false;//if not inuse, not holding the image
 
         }
@@ -72,7 +82,7 @@ public class DragNdrop : MonoBehaviour
 
     IEnumerator CountDownToStart()
     {
-        while(countdownTime > 0)
+        while (countdownTime > 0)
         {
             inUse = true;
             yield return new WaitForSeconds(1f);
@@ -81,27 +91,7 @@ public class DragNdrop : MonoBehaviour
         yield return new WaitForSeconds(1f);
         inUse = false;
         transform.position = startPos;
-
+        foodAnim.SetTrigger("CatFood Idle");
+        
     }
-
-    //IEnumerator CountDownToStart()
-    //{
-    //    while (countdownTime > 0)
-    //    {
-    //        inUse = true;
-    //        //countdownText.text = countdownTime.ToString();
-    //        yield return new WaitForSeconds(1f);
-    //        countdownTime--;
-    //    }
-
-    //    //countdownText.text = "BackToPos!";
-
-
-    //    yield return new WaitForSeconds(1f);
-
-    //    //countdownText.gameObject.SetActive(false);
-    //    inUse = false;
-    //    transform.position = startPos;
-
-    //}
 }

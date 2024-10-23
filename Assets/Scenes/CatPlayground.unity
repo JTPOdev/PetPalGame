@@ -1138,13 +1138,14 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8567302939620472303}
   m_Father: {fileID: 4630119729400279414}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 37.47, y: 131.00006}
-  m_SizeDelta: {x: 800, y: 299.3347}
+  m_AnchoredPosition: {x: 38.1, y: 131.00009}
+  m_SizeDelta: {x: 45.01, y: 80.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1453356079155593996
 MonoBehaviour:
@@ -7729,7 +7730,6 @@ RectTransform:
   - {fileID: 5629852055808209979}
   - {fileID: 6677540846636504398}
   - {fileID: 8574627532768518429}
-  - {fileID: 8567302939620472303}
   - {fileID: 1444857270258993365}
   - {fileID: 6896066086015517940}
   - {fileID: 5746804349737908273}
@@ -7960,6 +7960,7 @@ GameObject:
   - component: {fileID: 1444857270258993365}
   - component: {fileID: 167581318794541058}
   - component: {fileID: 8450210645345849610}
+  - component: {fileID: 8450210645345849611}
   m_Layer: 5
   m_Name: Current Coin Score
   m_TagString: Untagged
@@ -10254,6 +10255,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8450210645345849611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5036374851156490346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
 --- !u!114 &8564652513037655459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10296,11 +10311,11 @@ RectTransform:
   m_LocalScale: {x: 0.52272, y: 0.52272, z: 0.52272}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4630119729400279414}
+  m_Father: {fileID: 1444857270258993365}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -49, y: 135.00006}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -47.8, y: 3.9999847}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &8574627532768518429

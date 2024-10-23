@@ -45,7 +45,6 @@ public class Stats : MonoBehaviour
             Debug.Log("Destroying duplicate Stats instance.");
             Destroy(gameObject); 
         }
-
     }
 
 
@@ -195,8 +194,8 @@ public class Stats : MonoBehaviour
             energyBar.value = PlayerPrefs.GetFloat("EnergyValue");
     }
 
-    private void OnDestroy()
-    {
-        SceneManager.sceneLoaded -= OnSceneChanged;
-    }
+    //private void OnDestroy()
+    //{
+    //    SceneManager.sceneLoaded -= OnSceneChanged;
+    //}
 }

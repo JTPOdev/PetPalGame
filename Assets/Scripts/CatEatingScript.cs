@@ -7,9 +7,11 @@ public class CatEatingScript : MonoBehaviour
     [Header("Counter")]
     public TMPro.TMP_Text countdownText;
     public int countdownTime;
-    private Animator dogAnim;
+    private Animator catAnim;
 
     [Header("Page")]
+    public GameObject cathungry;
+    public GameObject catidle;
     public GameObject exitButton;
     public GameObject table;
     public GameObject path;
@@ -26,7 +28,7 @@ public class CatEatingScript : MonoBehaviour
 
     void Start()
     {
-        dogAnim = GetComponent<Animator>();
+        catAnim = GetComponent<Animator>();
         exitButton.SetActive(false);
         table.SetActive(false);
         path.SetActive(false);
@@ -36,7 +38,7 @@ public class CatEatingScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Eats"))
         {
-            dogAnim.SetTrigger("Cat Eating");
+            catAnim.SetTrigger("Cat Eating");
             //Destroy(other.gameObject, 1);
             StartCoroutine(CountDownToStart());
         }
@@ -46,7 +48,7 @@ public class CatEatingScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Eats"))
         {
-            dogAnim.SetTrigger("Cat Idle");
+            catAnim.SetTrigger("Cat Idle");
         }
     }
 
@@ -75,6 +77,7 @@ public class CatEatingScript : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
         exitButton.SetActive(true);
-
+        cathungry.SetActive(false);
+        catidle.SetActive(true);
     }
 }
