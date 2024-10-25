@@ -1,11 +1,11 @@
 using UnityEngine;
 using TMPro; 
 using UnityEngine.UI; 
+
 public class FoodSelection : MonoBehaviour
 {
     public TMP_Text descriptionText;
     public TMP_Text costText;
-
     public Button DogFoodButton;
     public Button TurkeyButton;
     public Button SteakButton;
@@ -13,21 +13,19 @@ public class FoodSelection : MonoBehaviour
     public Button MilkButton;
     public Button MilkShakeButton;
 
-public class FoodItem
-{
-    public string itemName;
-    public string description;
-    public int cost;
-
-    public FoodItem(string name, string desc, int price)
+    public class FoodItem
     {
-        itemName = name;
-        description = desc;
-        cost = price;
+        public string itemName;
+        public string description;
+        public int cost;
+        public FoodItem(string name, string desc, int price)
+        {
+            itemName = name;
+            description = desc;
+            cost = price;
+        }
     }
-}
-
-    // Declare your food items the description and the cost of the food
+    
     private FoodItem dogFood = new FoodItem("Dog Food", "+5 HUNGER", 10);
     private FoodItem turkey = new FoodItem("Turkey", "+15 HUNGER", 30);
     private FoodItem steak = new FoodItem("Steak", "+20 HUNGER", 50);
@@ -35,16 +33,22 @@ public class FoodItem
     private FoodItem milk = new FoodItem("Milk", "+15 THIRST", 15);
     private FoodItem milkshake = new FoodItem("Milkshake", "+20 THIRST", 20);
 
-
     void Start()
     {
-        // Set up button listeners
-        DogFoodButton.onClick.AddListener(() => ShowFoodInfo(dogFood));
-        TurkeyButton.onClick.AddListener(() => ShowFoodInfo(turkey));
-        SteakButton.onClick.AddListener(() => ShowFoodInfo(steak));
-        WaterButton.onClick.AddListener(() => ShowFoodInfo(water));
-        MilkButton.onClick.AddListener(() => ShowFoodInfo(milk));
-        MilkShakeButton.onClick.AddListener(() => ShowFoodInfo(milkshake));
+        // Set up button listeners using a dedicated method
+        InitializeButton(DogFoodButton, dogFood);
+        InitializeButton(TurkeyButton, turkey);
+        InitializeButton(SteakButton, steak);
+        InitializeButton(WaterButton, water);
+        InitializeButton(MilkButton, milk);
+        InitializeButton(MilkShakeButton, milkshake);
+    }
+
+    // Function to initialize button listeners
+    void InitializeButton(Button button, FoodItem foodItem)
+    {
+        button.onClick.RemoveAllListeners();  // Clear any existing listeners
+        button.onClick.AddListener(() => ShowFoodInfo(foodItem));
     }
 
     // Function to display the food information
@@ -53,7 +57,7 @@ public class FoodItem
         if (descriptionText != null && costText != null)
         {
             descriptionText.text = food.description;
-            costText.text = " " + food.cost.ToString() + " coins";
+            costText.text = "coins: " + food.cost.ToString();
         }
     }
 }
