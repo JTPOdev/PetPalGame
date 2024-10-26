@@ -283,6 +283,7 @@ GameObject:
   - component: {fileID: 265713934}
   - component: {fileID: 265713936}
   - component: {fileID: 265713935}
+  - component: {fileID: 265713937}
   m_Layer: 5
   m_Name: TapBar
   m_TagString: Untagged
@@ -376,6 +377,22 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &265713937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265713933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13210a067277b1e4899757af2a986bcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PawAnim: {fileID: 0}
+  max: 10
+  ClickCounter: 0
+  barscript: {fileID: 265713935}
 --- !u!1 &308759180
 GameObject:
   m_ObjectHideFlags: 0

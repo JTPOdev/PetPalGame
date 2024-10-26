@@ -7,7 +7,7 @@ public class NameScript : MonoBehaviour
     public TMP_InputField nameInputField;
     public TextMeshProUGUI nameDisplayText;
 
-    private const string PetNameKey = "PetName";
+    private const string PetNameKey = "PetName"; 
     private const int MaxNameLength = 10;
 
     void Start()
@@ -27,8 +27,9 @@ public class NameScript : MonoBehaviour
         {
             if (petName.Length <= MaxNameLength)
             {
-                PlayerPrefs.SetString(PetNameKey, petName);
-                PlayerPrefs.Save();
+                PlayerPrefs.SetString(PetNameKey, petName); // Save the name here
+                PlayerPrefs.SetInt("NameEntered", 1); // Mark that the name has been entered
+                PlayerPrefs.Save(); // Save PlayerPrefs to disk
 
                 Debug.Log("Starting coroutine to add pet.");
                 StartCoroutine(DatabaseManager.Instance.AddPet(petName));
@@ -53,5 +54,4 @@ public class NameScript : MonoBehaviour
             nameInputField.Select();
         }
     }
-
 }

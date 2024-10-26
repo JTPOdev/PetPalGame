@@ -197,6 +197,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 15980126}
   m_CullTransparentMesh: 1
+--- !u!1 &60421445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 60421447}
+  - component: {fileID: 60421446}
+  m_Layer: 0
+  m_Name: EggSelectionPref
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &60421446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60421445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31569741b7818f549b3db2b227dc6cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dogEggButton: {fileID: 924992194}
+  catEggButton: {fileID: 733070159}
+--- !u!4 &60421447
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60421445}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 643.4624, y: 1209.6603, z: -7.235156}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &138119448
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,6 +1070,7 @@ GameObject:
   - component: {fileID: 733070160}
   - component: {fileID: 733070159}
   - component: {fileID: 733070162}
+  - component: {fileID: 733070163}
   m_Layer: 5
   m_Name: Cat Egg Button
   m_TagString: Untagged
@@ -1165,6 +1212,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &733070163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733070157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31569741b7818f549b3db2b227dc6cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dogEggButton: {fileID: 924992194}
+  catEggButton: {fileID: 733070159}
 --- !u!1 &887945229
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,6 +1314,7 @@ GameObject:
   - component: {fileID: 924992195}
   - component: {fileID: 924992194}
   - component: {fileID: 924992193}
+  - component: {fileID: 924992197}
   m_Layer: 5
   m_Name: Dog Egg Button
   m_TagString: Untagged
@@ -1394,6 +1456,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 924992191}
   m_CullTransparentMesh: 1
+--- !u!114 &924992197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924992191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31569741b7818f549b3db2b227dc6cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dogEggButton: {fileID: 924992194}
+  catEggButton: {fileID: 733070159}
 --- !u!1 &1066488614
 GameObject:
   m_ObjectHideFlags: 0
@@ -2260,3 +2336,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 1066488617}
   - {fileID: 480181268}
+  - {fileID: 60421447}

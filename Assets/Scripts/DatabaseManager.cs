@@ -69,6 +69,53 @@ public class DatabaseManager : MonoBehaviour
         }
     }
 
+    public IEnumerator AddCoins(string userId, int coins)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("name", userId);
+        form.AddField("coins", coins);
+
+        using (UnityWebRequest www = UnityWebRequest.Post("https://192.168.100.126/petpalgame/AddCoins.php", form))
+        {
+            // Bypass SSL certificate validation
+            www.certificateHandler = new BypassCertificateHandler();
+
+            yield return www.SendWebRequest();
+               
+            Debug.Log("Response Code: " + www.responseCode);
+            if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.LogError("Error while adding coins: " + www.error);
+            }
+            else
+            {
+                Debug.Log("Coins added successfully: " + www.downloadHandler.text);
+            }
+        }
+    }
+
+    public IEnumerator UpdatePetCoins(string petName, int coins)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("name", petName);
+        form.AddField("coins", coins);
+
+        using (UnityWebRequest www = UnityWebRequest.Post("https://192.168.100.126/petpalgame/GetPets.php", form))
+        {
+            www.certificateHandler = new BypassCertificateHandler();
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.LogError("Error while updating coins: " + www.error);
+            }
+            else
+            {
+                Debug.Log("Response: " + www.downloadHandler.text);
+            }
+        }
+    }
+
     // CertificateHandler class to bypass SSL validation (for development only)
     public class BypassCertificateHandler : CertificateHandler
     {
