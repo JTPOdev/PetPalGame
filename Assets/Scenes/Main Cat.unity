@@ -2116,7 +2116,9 @@ MonoBehaviour:
   stats: {fileID: 6120667573155107479}
   bathAmount: 5
   playAmount: 15
+  playDuration: 3
   sleepAmount: 3
+  sleepDuration: 3
 --- !u!224 &1990553777
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2705,6 +2707,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5788055515685320478}
+        m_TargetAssemblyTypeName: PawScript, Assembly-CSharp
+        m_MethodName: openHomeMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &103889319488370222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3020,7 +3034,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -4568,6 +4582,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinScript: {fileID: 4124202398288980139}
+  foodSelection: {fileID: 0}
+  descriptionText: {fileID: 4219061070430587136}
+  costText: {fileID: 3241822550537576290}
   itemPurchased: 0
   hungerLevel: 20
   hungerRestoreAmount: 20
@@ -4593,8 +4610,6 @@ MonoBehaviour:
   feedButtonWater: {fileID: 2262107296418749870}
   feedButtonMilk: {fileID: 4569676028804927736}
   feedButtonMilkshake: {fileID: 5114026899460291415}
-  descriptionText: {fileID: 4219061070430587136}
-  costText: {fileID: 3241822550537576290}
 --- !u!224 &1884018305570870360
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7578,6 +7593,8 @@ GameObject:
   - component: {fileID: 5615341338621591989}
   - component: {fileID: 2389310055325865963}
   - component: {fileID: 8528139042444164812}
+  - component: {fileID: 8528139042444164813}
+  - component: {fileID: 8528139042444164814}
   m_Layer: 5
   m_Name: Cat Idle
   m_TagString: Mouth
@@ -8562,7 +8579,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PawAnim: {fileID: 1743514691673851675}
-  inputField: {fileID: 0}
 --- !u!224 &5800751851666064106
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9302,6 +9318,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinScript: {fileID: 4124202398288980139}
+  foodSelection: {fileID: 0}
+  descriptionText: {fileID: 4219061070430587136}
+  costText: {fileID: 3241822550537576290}
   itemPurchased: 0
   hungerLevel: 20
   hungerRestoreAmount: 20
@@ -9327,8 +9346,6 @@ MonoBehaviour:
   feedButtonWater: {fileID: 2262107296418749870}
   feedButtonMilk: {fileID: 4569676028804927736}
   feedButtonMilkshake: {fileID: 5114026899460291415}
-  descriptionText: {fileID: 4219061070430587136}
-  costText: {fileID: 3241822550537576290}
 --- !u!224 &6466266759892566384
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9717,6 +9734,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinScript: {fileID: 4124202398288980139}
+  foodSelection: {fileID: 0}
+  descriptionText: {fileID: 4219061070430587136}
+  costText: {fileID: 3241822550537576290}
   itemPurchased: 0
   hungerLevel: 20
   hungerRestoreAmount: 20
@@ -9742,8 +9762,6 @@ MonoBehaviour:
   feedButtonWater: {fileID: 2262107296418749870}
   feedButtonMilk: {fileID: 4569676028804927736}
   feedButtonMilkshake: {fileID: 5114026899460291415}
-  descriptionText: {fileID: 4219061070430587136}
-  costText: {fileID: 3241822550537576290}
 --- !u!222 &6971799242227061045
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10442,7 +10460,9 @@ MonoBehaviour:
   stats: {fileID: 6120667573155107479}
   bathAmount: 5
   playAmount: 15
+  playDuration: 3
   sleepAmount: 3
+  sleepDuration: 3
 --- !u!1 &7705515222757865035
 GameObject:
   m_ObjectHideFlags: 0
@@ -11263,6 +11283,86 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8528139042444164813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4795934066081639448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 0
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 8528139042444164811}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8528139042444164812}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Cat Heart Animation
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1735036141}
+        m_TargetAssemblyTypeName: Audios, Assembly-CSharp
+        m_MethodName: Grab
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8528139042444164814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4795934066081639448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78682a11122d1b141bfbb241ac1ab83c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8533036602330990629
 MonoBehaviour:
   m_ObjectHideFlags: 0

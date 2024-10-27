@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] RectTransform PawAnim;
     private void Start()
     {
         CheckPlayerProgress();
@@ -17,11 +18,27 @@ public class MainMenu : MonoBehaviour
             string selectedEgg = PlayerProgress.GetSelectedEgg();
             if (selectedEgg == "dog")
             {
-                SceneManager.LoadScene(SceneData.maindog); // Load main dog scene
+                AudioManager.instance.Play("ButtonPressed");
+                PawAnim.gameObject.SetActive(true);
+                LeanTween.scale(PawAnim, Vector3.zero, 0f);
+                LeanTween.scale(PawAnim, new Vector3(1, 1, 1), 1.1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() =>
+                {
+                    AudioManager.instance.Stop("HomeBGaudio");
+                    AudioManager.instance.Play("MainBGaudio");
+                    SceneManager.LoadScene(SceneData.maindog); // Load main dog scene
+                });
             }
             else if (selectedEgg == "cat")
             {
-                SceneManager.LoadScene(SceneData.maincat); // Load main cat scene
+                AudioManager.instance.Play("ButtonPressed");
+                PawAnim.gameObject.SetActive(true);
+                LeanTween.scale(PawAnim, Vector3.zero, 0f);
+                LeanTween.scale(PawAnim, new Vector3(1, 1, 1), 1.1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() =>
+                {
+                    AudioManager.instance.Stop("HomeBGaudio");
+                    AudioManager.instance.Play("MainBGaudio");
+                    SceneManager.LoadScene(SceneData.maincat); // Load main cat scene
+                });
             }
             else
             {

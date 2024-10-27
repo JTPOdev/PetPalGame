@@ -8,7 +8,6 @@ using TMPro;
 public class PawScript : MonoBehaviour
 {
     [SerializeField] RectTransform PawAnim;
-    public TMP_InputField inputField;
 
     private void Start()
     {

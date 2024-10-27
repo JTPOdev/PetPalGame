@@ -72,4 +72,19 @@ public class Audios : MonoBehaviour
         AudioManager.instance.Play("Drink 3");
         AudioManager.instance.Play("Drink 3");
     }
+
+    public void Meow()
+    {
+        AudioManager.instance.Play("Meow");
+    }
+
+    public void Bark()
+    {
+        AudioManager.instance.Play("Bark");
+    }
+
+    public void Grab()
+    {
+        AudioManager.instance.Play("Grab");
+    }
 }
