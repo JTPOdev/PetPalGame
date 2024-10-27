@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+using TMPro; 
 
 public class BuynFeed : MonoBehaviour
 {
     public CoinScript coinScript;
+    public FoodSelection foodSelection;
+
+     public TMP_Text descriptionText;
+    public TMP_Text costText;
     public bool itemPurchased = false;
 
     [Header("Hunger Stats")]
@@ -36,7 +40,7 @@ public class BuynFeed : MonoBehaviour
     public GameObject milkDrinkImg;
     public GameObject milkshakeDrinkImg;
 
-    [Header("Feed and Buy Buttons")]
+    [Header("Feed and But Buttons")]
     public Button buyButton;
     public Button feedButtonFood1;
     public Button feedButtonFood2;
@@ -44,10 +48,6 @@ public class BuynFeed : MonoBehaviour
     public Button feedButtonWater;
     public Button feedButtonMilk;
     public Button feedButtonMilkshake;
-
-    // New variables for food selection
-    public TMP_Text descriptionText; // Reference to the description text
-    public TMP_Text costText;         // Reference to the cost text
 
     private int selectedFoodCost = 0;
     private bool isBuying = false;
@@ -57,8 +57,6 @@ public class BuynFeed : MonoBehaviour
         public string itemName;
         public string description;
         public int cost;
-
-        public int hungerRestoreAmount;
         public FoodItem(string name, string desc, int price)
         {
             itemName = name;
@@ -66,101 +64,116 @@ public class BuynFeed : MonoBehaviour
             cost = price;
         }
     }
-
-    // Food items information
-    private FoodItem[] foodItems = {
-        new FoodItem("Dog Food", "+5 HUNGER", 10),
-        new FoodItem("Turkey", "+15 HUNGER", 30),
-        new FoodItem("Steak", "+20 HUNGER", 50),
-        new FoodItem("Water", "+10 THIRST", 5),
-        new FoodItem("Milk", "+15 THIRST", 15),
-        new FoodItem("Milkshake", "+20 THIRST", 20)
-    };
+    
+    private FoodItem foodImg1 = new FoodItem("Dog Food", "+5 HUNGER", 10);
+    private FoodItem foodImg2 = new FoodItem("Turkey", "+15 HUNGER", 30);
+    private FoodItem foodImg3 = new FoodItem("Steak", "+20 HUNGER", 50);
+    private FoodItem water = new FoodItem("Water", "+10 THIRST", 5);
+    private FoodItem milk = new FoodItem("Milk", "+15 THIRST", 15);
+    private FoodItem milkshake = new FoodItem("Milkshake", "+20 THIRST", 20);
 
     void Start()
     {
-        ValidateButtons();
-        SetInitialStates();
-        SetButtonListeners();
-    }
-
-    void ValidateButtons()
-    {
+        // Find and check buttons
         if (FoodButton1 == null || FoodButton2 == null || FoodButton3 == null ||
             waterDrinkButton == null || milkDrinkButton == null || milkShakeDrinkButton == null ||
-            buyButton == null || feedButtonFood1 == null || feedButtonFood2 == null || feedButtonFood3 == null ||
-            feedButtonWater == null || feedButtonMilk == null || feedButtonMilkshake == null)
+            buyButton == null || feedButtonFood1 == null || feedButtonFood2 == null || feedButtonFood3 == null
+            || feedButtonWater == null || feedButtonMilk == null || feedButtonMilkshake == null)
         {
             Debug.LogError("One or more buttons are not assigned!");
         }
-    }
 
-    void SetInitialStates()
-    {
+        void ShowFoodInfo(FoodItem food)
+        {
+            Debug.Log("ShowFoodInfo called for: " + food.itemName);
+            if (descriptionText != null && costText != null)
+            {
+                descriptionText.text = food.description;
+                costText.text = "coins: " + food.cost.ToString();
+            }
+        }
+
+        //Pages turned OFF
         mainPage.SetActive(false);
         storePage.SetActive(true);
         tablePage.SetActive(false);
 
+        //Food Image turned OFF
         FoodImg1.SetActive(false);
         FoodImg2.SetActive(false);
         FoodImg3.SetActive(false);
+
+        //Drink Image Turned OFF
         waterDrinkImg.SetActive(false);
         milkDrinkImg.SetActive(false);
         milkshakeDrinkImg.SetActive(false);
 
-        // Set initial button visibility
         feedButtonFood1.gameObject.SetActive(false);
         feedButtonFood2.gameObject.SetActive(false);
         feedButtonFood3.gameObject.SetActive(false);
         feedButtonWater.gameObject.SetActive(false);
         feedButtonMilk.gameObject.SetActive(false);
         feedButtonMilkshake.gameObject.SetActive(true);
-    }
 
-    void SetButtonListeners()
-    {
-        // Food buttons listeners
-        FoodButton1.onClick.AddListener(() => SelectFood(0, FoodImg1, feedButtonFood1));
-        FoodButton2.onClick.AddListener(() => SelectFood(1, FoodImg2, feedButtonFood2));
-        FoodButton3.onClick.AddListener(() => SelectFood(2, FoodImg3, feedButtonFood3));
-        AudioManager.instance.Play("Selected");
+        FoodButton1.onClick.RemoveAllListeners();
+        FoodButton1.onClick.AddListener(() => ShowFoodInfo(foodImg1));
+        FoodButton1.onClick.AddListener(() => SelectFood(10));
+        FoodButton1.onClick.AddListener(FoodImage1);
 
-        // Drink buttons listeners
-        waterDrinkButton.onClick.AddListener(() => SelectFood(3, waterDrinkImg, feedButtonWater));
-        milkDrinkButton.onClick.AddListener(() => SelectFood(4, milkDrinkImg, feedButtonMilk));
-        milkShakeDrinkButton.onClick.AddListener(() => SelectFood(5, milkshakeDrinkImg, feedButtonMilkshake));
-        AudioManager.instance.Play("Selected");
+        FoodButton2.onClick.RemoveAllListeners();
+        FoodButton2.onClick.AddListener(() => ShowFoodInfo(foodImg2));
+         FoodButton2.onClick.AddListener(() => SelectFood(30));
+        FoodButton2.onClick.AddListener(FoodImage2);
 
-        // Buy and feed buttons listeners
+
+        FoodButton3.onClick.RemoveAllListeners();
+        FoodButton3.onClick.AddListener(() => ShowFoodInfo(foodImg3));
+         FoodButton3.onClick.AddListener(() => SelectFood(50));
+        FoodButton3.onClick.AddListener(FoodImage3);
+
+        waterDrinkButton.onClick.RemoveAllListeners();
+        waterDrinkButton.onClick.AddListener(() => ShowFoodInfo(water));
+        waterDrinkButton.onClick.AddListener(() => SelectFood(5));
+        waterDrinkButton.onClick.AddListener(waterDrinkImage);
+
+        milkDrinkButton.onClick.RemoveAllListeners();
+        milkDrinkButton.onClick.AddListener(() => ShowFoodInfo(milk));
+         milkDrinkButton.onClick.AddListener(() => SelectFood(15));
+        milkDrinkButton.onClick.AddListener(milkDrinkImage);
+
+        milkShakeDrinkButton.onClick.RemoveAllListeners();
+        milkShakeDrinkButton.onClick.AddListener(() => ShowFoodInfo(milkshake));
+         milkShakeDrinkButton.onClick.AddListener(() => SelectFood(20));
+        milkShakeDrinkButton.onClick.AddListener(milkshakeDrinkImage);
+
+
+        buyButton.onClick.RemoveAllListeners();
         buyButton.onClick.AddListener(BuyItem);
-        feedButtonFood1.onClick.AddListener(() => FeedPet(0));
-        feedButtonFood2.onClick.AddListener(() => FeedPet(1));
-        feedButtonFood3.onClick.AddListener(() => FeedPet(2));
-        feedButtonWater.onClick.AddListener(() => FeedPet(3));
-        feedButtonMilk.onClick.AddListener(() => FeedPet(4));
-        feedButtonMilkshake.onClick.AddListener(() => FeedPet(5));
+
+        feedButtonFood1.onClick.RemoveAllListeners();
+        feedButtonFood1.onClick.AddListener(FeedPetFood1);
+
+        feedButtonFood2.onClick.RemoveAllListeners();
+        feedButtonFood2.onClick.AddListener(FeedPetFood2);
+
+        feedButtonFood3.onClick.RemoveAllListeners();
+        feedButtonFood3.onClick.AddListener(FeedPetFood3);
+
+        feedButtonWater.onClick.RemoveAllListeners();
+        feedButtonWater.onClick.AddListener(FeedPetWater);
+
+        feedButtonMilk.onClick.RemoveAllListeners();
+        feedButtonMilk.onClick.AddListener(FeedPetMilk);
+
+        feedButtonMilkshake.onClick.RemoveAllListeners();
+        feedButtonMilkshake.onClick.AddListener(FeedPetMilkshake);
     }
 
-    void SelectFood(int itemIndex, GameObject foodImage, Button feedButton)
+    // Select the food item and set its cost
+    void SelectFood(int itemCost)
     {
-        if (itemIndex >= 0 && itemIndex < foodItems.Length)
-        {
-            selectedFoodCost = foodItems[itemIndex].cost;
-            UpdateFoodInfo(itemIndex);
-            foodImage.SetActive(true);
-            feedButton.gameObject.SetActive(true);
-            AudioManager.instance.Play("Selected");
-            Debug.Log("Selected food cost: " + selectedFoodCost);
-        }
-    }
-
-    void UpdateFoodInfo(int itemIndex)
-    {
-        if (descriptionText != null && costText != null)
-        {
-            descriptionText.text = foodItems[itemIndex].description;
-            costText.text = "Coins: " + foodItems[itemIndex].cost.ToString();
-        }
+        selectedFoodCost = itemCost;
+        Debug.Log("Selected food cost: " + selectedFoodCost);
     }
 
     void BuyItem()
@@ -175,7 +188,7 @@ public class BuynFeed : MonoBehaviour
             return;
         }
 
-        if (coinScript.SpendCoins(selectedFoodCost))
+        if (coinScript.SpendCoins(selectedFoodCost))  // Deduct the selected food cost from coins
         {
             AudioManager.instance.Play("ButtonPressed");
             itemPurchased = true;
@@ -190,7 +203,8 @@ public class BuynFeed : MonoBehaviour
         isBuying = false;
     }
 
-    public void FeedPet(int itemIndex)
+    // When Feed button is clicked
+    public void FeedPetFood1()
     {
         if (coinScript == null)
         {
@@ -198,17 +212,16 @@ public class BuynFeed : MonoBehaviour
             return;
         }
 
-        if (itemPurchased && hungerLevel < 100)
+        if (itemPurchased && hungerLevel < 100)  // Ensure item was purchased and pet can be fed
         {
-            hungerLevel = Mathf.Min(hungerLevel + foodItems[itemIndex].hungerRestoreAmount, 100);
+            hungerLevel = Mathf.Min(hungerLevel + hungerRestoreAmount, 100);  // Restore hunger
             Debug.Log("Pet fed. Hunger level: " + hungerLevel);
             itemPurchased = false;
             AudioManager.instance.Play("ButtonPressed");
-            mainPage.SetActive(true);
-            storePage.SetActive(false);
+            mainPage.SetActive(true);  //  Opens mainpage scene
+            storePage.SetActive(false);  //  Closes storepage scene
             tablePage.SetActive(true);
-            // Activate the corresponding image based on the itemIndex
-            ActivateFoodImage(itemIndex);
+            FoodImg1.SetActive(true);
         }
         else if (hungerLevel >= 100)
         {
@@ -222,13 +235,236 @@ public class BuynFeed : MonoBehaviour
         }
     }
 
-    void ActivateFoodImage(int itemIndex)
+    public void FeedPetFood2()
     {
-        FoodImg1.SetActive(itemIndex == 0);
-        FoodImg2.SetActive(itemIndex == 1);
-        FoodImg3.SetActive(itemIndex == 2);
-        waterDrinkImg.SetActive(itemIndex == 3);
-        milkDrinkImg.SetActive(itemIndex == 4);
-        milkshakeDrinkImg.SetActive(itemIndex == 5);
+        if (coinScript == null)
+        {
+            Debug.LogError("CoinScript reference is null!");
+            return;
+        }
+
+        if (itemPurchased && hungerLevel < 100)  // Ensure item was purchased and pet can be fed
+        {
+            hungerLevel = Mathf.Min(hungerLevel + hungerRestoreAmount, 100);  // Restore hunger
+            Debug.Log("Pet fed. Hunger level: " + hungerLevel);
+            itemPurchased = false;
+            AudioManager.instance.Play("ButtonPressed");
+            mainPage.SetActive(true);  //  Opens mainpage scene
+            storePage.SetActive(false);  //  Closes storepage scene
+            tablePage.SetActive(true);
+            FoodImg2.SetActive(true);
+
+        }
+        else if (hungerLevel >= 100)
+        {
+            AudioManager.instance.Play("Wrong");
+            Debug.Log("Hunger level is already at maximum!");
+        }
+        else
+        {
+            AudioManager.instance.Play("Wrong");
+            Debug.Log("You need to purchase food first.");
+        }
+    }
+
+    public void FeedPetFood3()
+    {
+        if (coinScript == null)
+        {
+            Debug.LogError("CoinScript reference is null!");
+            return;
+        }
+
+        if (itemPurchased && hungerLevel < 100)  // Ensure item was purchased and pet can be fed
+        {
+            hungerLevel = Mathf.Min(hungerLevel + hungerRestoreAmount, 100);  // Restore hunger
+            Debug.Log("Pet fed. Hunger level: " + hungerLevel);
+            itemPurchased = false;
+            AudioManager.instance.Play("ButtonPressed");
+            mainPage.SetActive(true);  //  Opens mainpage scene
+            storePage.SetActive(false);  //  Closes storepage scene
+            tablePage.SetActive(true);
+            FoodImg3.SetActive(true);
+
+        }
+        else if (hungerLevel >= 100)
+        {
+            AudioManager.instance.Play("Wrong");
+            Debug.Log("Hunger level is already at maximum!");
+        }
+        else
+        {
+            AudioManager.instance.Play("Wrong");
+            Debug.Log("You need to purchase food first.");
+        }
+    }
+
+    public void FeedPetWater()
+    {
+        if (coinScript == null)
+        {
+            Debug.LogError("CoinScript reference is null!");
+            return;
+        }
+
+        if (itemPurchased && hungerLevel < 100)  // Ensure item was purchased and pet can be fed
+        {
+            hungerLevel = Mathf.Min(hungerLevel + hungerRestoreAmount, 100);  // Restore hunger
+            Debug.Log("Pet fed. Hunger level: " + hungerLevel);
+            itemPurchased = false;
+            AudioManager.instance.Play("ButtonPressed");
+            mainPage.SetActive(true);  //  Opens mainpage scene
+            storePage.SetActive(false);  //  Closes storepage scene
+            tablePage.SetActive(true);
+            waterDrinkImg.SetActive(true);
+
+        }
+        else if (hungerLevel >= 100)
+        {
+            AudioManager.instance.Play("Wrong");
+            Debug.Log("Hunger level is already at maximum!");
+        }
+        else
+        {
+            AudioManager.instance.Play("Wrong");
+            Debug.Log("You need to purchase food first.");
+        }
+    }
+
+    public void FeedPetMilk()
+    {
+        if (coinScript == null)
+        {
+            Debug.LogError("CoinScript reference is null!");
+            return;
+        }
+
+        if (itemPurchased && hungerLevel < 100)  // Ensure item was purchased and pet can be fed
+        {
+            hungerLevel = Mathf.Min(hungerLevel + hungerRestoreAmount, 100);  // Restore hunger
+            Debug.Log("Pet fed. Hunger level: " + hungerLevel);
+            itemPurchased = false;
+            AudioManager.instance.Play("ButtonPressed");
+            mainPage.SetActive(true);  //  Opens mainpage scene
+            storePage.SetActive(false);  //  Closes storepage scene
+            tablePage.SetActive(true);
+            milkDrinkImg.SetActive(true);
+
+        }
+        else if (hungerLevel >= 100)
+        {
+            AudioManager.instance.Play("Wrong");
+            Debug.Log("Hunger level is already at maximum!");
+        }
+        else
+        {
+            AudioManager.instance.Play("Wrong");
+            Debug.Log("You need to purchase food first.");
+        }
+    }
+
+    public void FeedPetMilkshake()
+    {
+        if (coinScript == null)
+        {
+            Debug.LogError("CoinScript reference is null!");
+            return;
+        }
+
+        if (itemPurchased && hungerLevel < 100)  // Ensure item was purchased and pet can be fed
+        {
+            hungerLevel = Mathf.Min(hungerLevel + hungerRestoreAmount, 100);  // Restore hunger
+            Debug.Log("Pet fed. Hunger level: " + hungerLevel);
+            itemPurchased = false;
+            AudioManager.instance.Play("ButtonPressed");
+            mainPage.SetActive(true);  //  Opens mainpage scene
+            storePage.SetActive(false);  //  Closes storepage scene
+            tablePage.SetActive(true);
+            milkshakeDrinkImg.SetActive(true);
+
+        }
+        else if (hungerLevel >= 100)
+        {
+            AudioManager.instance.Play("Wrong");
+            Debug.Log("Hunger level is already at maximum!");
+        }
+        else
+        {
+            AudioManager.instance.Play("Wrong");
+            Debug.Log("You need to purchase food first.");
+        }
+    }
+
+    // Activate Image
+    public void FoodImage1()
+    {
+        AudioManager.instance.Play("Selected");
+        FoodImg1.SetActive(false);
+        feedButtonFood1.gameObject.SetActive(true);
+        feedButtonFood2.gameObject.SetActive(false);
+        feedButtonFood3.gameObject.SetActive(false);
+        feedButtonWater.gameObject.SetActive(false);
+        feedButtonMilk.gameObject.SetActive(false);
+        feedButtonMilkshake.gameObject.SetActive(false);
+    }
+
+    public void FoodImage2()
+    {
+        AudioManager.instance.Play("Selected");
+        FoodImg2.SetActive(false);
+        feedButtonFood1.gameObject.SetActive(false);
+        feedButtonFood2.gameObject.SetActive(true);
+        feedButtonFood3.gameObject.SetActive(false);
+        feedButtonWater.gameObject.SetActive(false);
+        feedButtonMilk.gameObject.SetActive(false);
+        feedButtonMilkshake.gameObject.SetActive(false);
+    }
+
+    public void FoodImage3()
+    {
+        AudioManager.instance.Play("Selected");
+        FoodImg3.SetActive(false);
+        feedButtonFood1.gameObject.SetActive(false);
+        feedButtonFood2.gameObject.SetActive(false);
+        feedButtonFood3.gameObject.SetActive(true);
+        feedButtonWater.gameObject.SetActive(false);
+        feedButtonMilk.gameObject.SetActive(false);
+        feedButtonMilkshake.gameObject.SetActive(false);
+    }
+
+    public void waterDrinkImage()
+    {
+        AudioManager.instance.Play("Selected");
+        waterDrinkImg.SetActive(false);
+        feedButtonFood1.gameObject.SetActive(false);
+        feedButtonFood2.gameObject.SetActive(false);
+        feedButtonFood3.gameObject.SetActive(false);
+        feedButtonWater.gameObject.SetActive(true);
+        feedButtonMilk.gameObject.SetActive(false);
+        feedButtonMilkshake.gameObject.SetActive(false);
+    }
+
+    public void milkDrinkImage()
+    {
+        AudioManager.instance.Play("Selected");
+        milkDrinkImg.SetActive(false);
+        feedButtonFood1.gameObject.SetActive(false);
+        feedButtonFood2.gameObject.SetActive(false);
+        feedButtonFood3.gameObject.SetActive(false);
+        feedButtonWater.gameObject.SetActive(false);
+        feedButtonMilk.gameObject.SetActive(true);
+        feedButtonMilkshake.gameObject.SetActive(false);
+    }
+
+    public void milkshakeDrinkImage()
+    {
+        AudioManager.instance.Play("Selected");
+        milkshakeDrinkImg.SetActive(false);
+        feedButtonFood1.gameObject.SetActive(false);
+        feedButtonFood2.gameObject.SetActive(false);
+        feedButtonFood3.gameObject.SetActive(false);
+        feedButtonWater.gameObject.SetActive(false);
+        feedButtonMilk.gameObject.SetActive(false);
+        feedButtonMilkshake.gameObject.SetActive(true);
     }
 }

@@ -35,7 +35,6 @@ public class FoodSelection : MonoBehaviour
 
     void Start()
     {
-        // Set up button listeners using a dedicated method
         InitializeButton(DogFoodButton, dogFood);
         InitializeButton(TurkeyButton, turkey);
         InitializeButton(SteakButton, steak);
@@ -44,20 +43,24 @@ public class FoodSelection : MonoBehaviour
         InitializeButton(MilkShakeButton, milkshake);
     }
 
+
     // Function to initialize button listeners
     void InitializeButton(Button button, FoodItem foodItem)
     {
-        button.onClick.RemoveAllListeners();  // Clear any existing listeners
+        button.onClick.RemoveAllListeners();  
         button.onClick.AddListener(() => ShowFoodInfo(foodItem));
+        Debug.Log("Listener added to: " + foodItem.itemName);
+
     }
 
-    // Function to display the food information
     void ShowFoodInfo(FoodItem food)
     {
+        Debug.Log("ShowFoodInfo called for: " + food.itemName);
         if (descriptionText != null && costText != null)
         {
             descriptionText.text = food.description;
             costText.text = "coins: " + food.cost.ToString();
         }
     }
+
 }

@@ -629,7 +629,9 @@ MonoBehaviour:
   stats: {fileID: 6234847742427885791}
   bathAmount: 5
   playAmount: 15
+  playDuration: 3
   sleepAmount: 3
+  sleepDuration: 3
 --- !u!1 &1980459845
 GameObject:
   m_ObjectHideFlags: 0
@@ -1605,6 +1607,7 @@ GameObject:
   - component: {fileID: 2511570073467378993}
   - component: {fileID: 7081755927676872406}
   - component: {fileID: 2776071855308681569}
+  - component: {fileID: 7081755927676872407}
   m_Layer: 5
   m_Name: StoreMenu
   m_TagString: Untagged
@@ -3345,6 +3348,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinScript: {fileID: 8770171995572369421}
+  foodSelection: {fileID: 5978021996059435171}
+  descriptionText: {fileID: 4105954611302968136}
+  costText: {fileID: 3353807510552345898}
   itemPurchased: 0
   hungerLevel: 20
   hungerRestoreAmount: 20
@@ -3370,8 +3376,6 @@ MonoBehaviour:
   feedButtonWater: {fileID: 2094953240968642534}
   feedButtonMilk: {fileID: 4403564295345926832}
   feedButtonMilkshake: {fileID: 4940156428376185119}
-  descriptionText: {fileID: 4105954611302968136}
-  costText: {fileID: 3353807510552345898}
 --- !u!1 &1807239890718128415
 GameObject:
   m_ObjectHideFlags: 0
@@ -4478,6 +4482,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinScript: {fileID: 8770171995572369421}
+  foodSelection: {fileID: 5978021996059435171}
+  descriptionText: {fileID: 4105954611302968136}
+  costText: {fileID: 3353807510552345898}
   itemPurchased: 0
   hungerLevel: 20
   hungerRestoreAmount: 20
@@ -4503,8 +4510,6 @@ MonoBehaviour:
   feedButtonWater: {fileID: 2094953240968642534}
   feedButtonMilk: {fileID: 4403564295345926832}
   feedButtonMilkshake: {fileID: 4940156428376185119}
-  descriptionText: {fileID: 4105954611302968136}
-  costText: {fileID: 3353807510552345898}
 --- !u!114 &2794960989181032597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5390,6 +5395,7 @@ GameObject:
   - component: {fileID: 6537865539479296989}
   - component: {fileID: 995065018886767702}
   - component: {fileID: 7559746391736277252}
+  - component: {fileID: 7559746391736277253}
   m_Layer: 5
   m_Name: Feed & Buy Button
   m_TagString: Untagged
@@ -9176,6 +9182,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinScript: {fileID: 8770171995572369421}
+  foodSelection: {fileID: 5978021996059435171}
+  descriptionText: {fileID: 4105954611302968136}
+  costText: {fileID: 3353807510552345898}
   itemPurchased: 0
   hungerLevel: 20
   hungerRestoreAmount: 20
@@ -9201,8 +9210,6 @@ MonoBehaviour:
   feedButtonWater: {fileID: 2094953240968642534}
   feedButtonMilk: {fileID: 4403564295345926832}
   feedButtonMilkshake: {fileID: 4940156428376185119}
-  descriptionText: {fileID: 4105954611302968136}
-  costText: {fileID: 3353807510552345898}
 --- !u!114 &6538181628042407568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9659,6 +9666,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7081755927676872407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526791706293997405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80807adb8c357b44db005df4f53f636e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  descriptionText: {fileID: 4105954611302968136}
+  costText: {fileID: 3353807510552345898}
+  DogFoodButton: {fileID: 1981836385431188235}
+  TurkeyButton: {fileID: 831506133626583933}
+  SteakButton: {fileID: 3061437608992776571}
+  WaterButton: {fileID: 2746790221058683123}
+  MilkButton: {fileID: 1451763737061295953}
+  MilkShakeButton: {fileID: 2801912350418909194}
 --- !u!114 &7095022644927331621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10360,7 +10387,29 @@ MonoBehaviour:
   stats: {fileID: 6234847742427885791}
   bathAmount: 5
   playAmount: 15
+  playDuration: 3
   sleepAmount: 3
+  sleepDuration: 3
+--- !u!114 &7559746391736277253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3461620748919523872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80807adb8c357b44db005df4f53f636e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  descriptionText: {fileID: 4105954611302968136}
+  costText: {fileID: 3353807510552345898}
+  DogFoodButton: {fileID: 1981836385431188235}
+  TurkeyButton: {fileID: 831506133626583933}
+  SteakButton: {fileID: 3061437608992776571}
+  WaterButton: {fileID: 2746790221058683123}
+  MilkButton: {fileID: 1451763737061295953}
+  MilkShakeButton: {fileID: 2801912350418909194}
 --- !u!114 &7564264308647373782
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,13 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class Stats : MonoBehaviour
 {
-    private NotificationManager notificationManager; 
     // Global stat values that persist across scenes
-    private float bathValue = 100f;
-    private float funValue = 100f;
-    private float thirstValue = 100f;
-    private float hungerValue = 100f;
-    private float energyValue = 100f;
+    private float bathValue;
+    private float funValue;
+    private float thirstValue;
+    private float hungerValue;
+    private float energyValue;
 
     // Public Sliders for UI assignment
     public Slider bathBar;
@@ -24,8 +23,9 @@ public class Stats : MonoBehaviour
     // Public properties to access hunger and thirst values
     public float Hunger => hungerValue;
     public float Thirst => thirstValue;
+    public float Energy => energyValue;
+    public float Fun => funValue;
 
-    // Constants for max values
     private const int MAX_BATH = 100;
     private const int MAX_FUN = 100;
     private const int MAX_THIRST = 100;
@@ -45,31 +45,14 @@ public class Stats : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        LoadStats(); // Load the values when the game starts
     }
 
     private void Start()
     {
-        notificationManager = FindObjectOfType<NotificationManager>();
         SceneManager.sceneLoaded += OnSceneChanged;
         InitializeSliders();
         StartCoroutine(DecreaseStatsOverTime());
-    }
-
-    private void CheckAndNotifyStatLevel(string statName, float statValue)
-    {
-        // Check if the stat is below 30% of its maximum value
-        if (statValue <= 0.3f * MAX_BATH && statName == "Bath" || 
-            statValue <= 0.3f * MAX_FUN && statName == "Fun" || 
-            statValue <= 0.3f * MAX_THIRST && statName == "Thirst" || 
-            statValue <= 0.3f * MAX_HUNGER && statName == "Hunger" || 
-            statValue <= 0.3f * MAX_ENERGY && statName == "Energy")
-        {
-            notificationManager.ScheduleNotification(
-                "Low Stat Alert",
-                $"{statName} is below 30%! Please take care of it soon!",
-                0
-            );
-        }
     }
 
     private void OnSceneChanged(Scene scene, LoadSceneMode mode)
@@ -113,30 +96,41 @@ public class Stats : MonoBehaviour
     { 
         ChangeGlobalStat(ref bathValue, MAX_BATH, amount);
         UpdateSlidersFromGlobalValues();
+        SaveStats(); // Save after taking a bath
     }
 
     public void HaveFun(int amount) 
     { 
         ChangeGlobalStat(ref funValue, MAX_FUN, amount);
         UpdateSlidersFromGlobalValues();
+        SaveStats(); // Save after having fun
     }
 
     public void Drink(int amount) 
     { 
         ChangeGlobalStat(ref thirstValue, MAX_THIRST, amount);
         UpdateSlidersFromGlobalValues();
+        SaveStats(); // Save after drinking
+
+        Debug.Log($"Eating amount: {amount}");
+        Debug.Log($"New hunger value: {hungerValue}");
     }
 
     public void Eat(int amount) 
     { 
         ChangeGlobalStat(ref hungerValue, MAX_HUNGER, amount);
         UpdateSlidersFromGlobalValues();
+        SaveStats(); // Save after eating
+
+        Debug.Log($"Eating amount: {amount}");
+        Debug.Log($"New hunger value: {hungerValue}"); 
     }
 
     public void Rest(int amount) 
     { 
         ChangeGlobalStat(ref energyValue, MAX_ENERGY, amount);
         UpdateSlidersFromGlobalValues();
+        SaveStats(); // Save after resting
     }
 
     private void ChangeGlobalStat(ref float statValue, int maxValue, int amount)
@@ -155,15 +149,9 @@ public class Stats : MonoBehaviour
             DecreaseGlobalStat(ref hungerValue, 5);
             DecreaseGlobalStat(ref energyValue, 4);
 
-            // Check if any stat is below 30 and notify
-            CheckAndNotifyStatLevel("Bath", bathValue);
-            CheckAndNotifyStatLevel("Fun", funValue);
-            CheckAndNotifyStatLevel("Thirst", thirstValue);
-            CheckAndNotifyStatLevel("Hunger", hungerValue);
-            CheckAndNotifyStatLevel("Energy", energyValue);
-
             // Update sliders in the current scene with the decreased values
             UpdateSlidersFromGlobalValues();
+            SaveStats(); // Save after decreasing stats
         }
     }
 
@@ -188,5 +176,43 @@ public class Stats : MonoBehaviour
         if (thirstBar != null) thirstBar.gameObject.SetActive(false);
         if (hungerBar != null) hungerBar.gameObject.SetActive(false);
         if (energyBar != null) energyBar.gameObject.SetActive(false);
+    }
+
+    public void CheckAndDisplayFullStats()
+    {
+        if (bathValue >= MAX_BATH)
+            DisplayFullStat("Bath is full!");
+        if (funValue >= MAX_FUN)
+            DisplayFullStat("Fun is full!");
+        if (thirstValue >= MAX_THIRST)
+            DisplayFullStat("Thirst is full!");
+        if (hungerValue >= MAX_HUNGER)
+            DisplayFullStat("Hunger is full!");
+        if (energyValue >= MAX_ENERGY)
+            DisplayFullStat("Energy is full!");
+    }
+
+    private void DisplayFullStat(string message)
+    {
+        Debug.Log(message);
+    }
+
+    private void SaveStats()
+    {
+        PlayerPrefs.SetFloat("BathValue", bathValue);
+        PlayerPrefs.SetFloat("FunValue", funValue);
+        PlayerPrefs.SetFloat("ThirstValue", thirstValue);
+        PlayerPrefs.SetFloat("HungerValue", hungerValue);
+        PlayerPrefs.SetFloat("EnergyValue", energyValue);
+        PlayerPrefs.Save(); // Ensure data is saved
+    }
+
+    private void LoadStats()
+    {
+        bathValue = PlayerPrefs.GetFloat("BathValue", MAX_BATH);
+        funValue = PlayerPrefs.GetFloat("FunValue", MAX_FUN);
+        thirstValue = PlayerPrefs.GetFloat("ThirstValue", MAX_THIRST);
+        hungerValue = PlayerPrefs.GetFloat("HungerValue", MAX_HUNGER);
+        energyValue = PlayerPrefs.GetFloat("EnergyValue", MAX_ENERGY);
     }
 }

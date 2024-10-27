@@ -1,11 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro; // Make sure this is included
+
 
 public class MainMenu : MonoBehaviour
 {
-    public TextMeshProUGUI nameDisplayText; // Ensure this is set in the Inspector
-
     private void Start()
     {
         CheckPlayerProgress();
@@ -43,7 +41,6 @@ public class MainMenu : MonoBehaviour
         {
             string selectedEgg = PlayerProgress.GetSelectedEgg();
             string playerName = PlayerPrefs.GetString("PetName", "No name found"); // Retrieve the player's name here
-            nameDisplayText.text = $"Welcome back, {playerName}!"; // Display the player's name
         }
     }
 }

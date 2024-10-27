@@ -2024,6 +2024,7 @@ MonoBehaviour:
   bathAmount: 20
   playAmount: 15
   sleepAmount: 25
+  sleepDuration: 3
 --- !u!4 &1825568117
 Transform:
   m_ObjectHideFlags: 0
@@ -2573,7 +2574,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1825568116}
         m_TargetAssemblyTypeName: StatsFunction, Assembly-CSharp
-        m_MethodName: StartIncreasingSleep
+        m_MethodName: Sleep
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3011,18 +3012,6 @@ MonoBehaviour:
       - m_Target: {fileID: 2336253213582410672}
         m_TargetAssemblyTypeName: Audios, Assembly-CSharp
         m_MethodName: ButtonPressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1825568116}
-        m_TargetAssemblyTypeName: StatsFunction, Assembly-CSharp
-        m_MethodName: StopIncreasingSleep
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -717,7 +717,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 455788221}
-  - component: {fileID: 455788220}
+  - component: {fileID: 455788222}
   m_Layer: 0
   m_Name: StatsFunc
   m_TagString: Untagged
@@ -725,22 +725,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &455788220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 455788219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94f9c3444a221d3418f2cb666e5fae7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: 398103918}
-  bathAmount: 20
-  playAmount: 15
-  sleepAmount: 25
 --- !u!4 &455788221
 Transform:
   m_ObjectHideFlags: 0
@@ -756,6 +740,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &455788222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455788219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94f9c3444a221d3418f2cb666e5fae7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 90744857}
+  bathAmount: 5
+  playAmount: 15
+  sleepAmount: 3
 --- !u!1 &631382800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1685,7 +1685,7 @@ MonoBehaviour:
   - {fileID: 8353847177723645812}
   - {fileID: 3182349438730050438}
   takeBathButton: {fileID: 5826895929706634903}
-  statsFunction: {fileID: 455788220}
+  statsFunction: {fileID: 455788222}
 --- !u!4 &1347413410
 Transform:
   m_ObjectHideFlags: 0
@@ -4232,12 +4232,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+        m_TargetAssemblyTypeName: StatsFunction, Assembly-CSharp
+        m_MethodName: TakeBath
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
