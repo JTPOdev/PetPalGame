@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;  // Include TMP for text
+using TMPro;
 
 public class BuynFeed : MonoBehaviour
 {
@@ -14,31 +14,29 @@ public class BuynFeed : MonoBehaviour
     public int hungerRestoreAmount = 20;
 
     [Header("Food and Drinks Buttons")]
-    public Button DogFoodButton;
-    public Button TurkeyButton;
-    public Button SteakButton;
-    public Button WaterButton;
-    public Button MilkButton;
-    public Button MilkShakeButton;
-
-    [Header("Description and Cost Texts")]
-    public TMP_Text descriptionText;
-    public TMP_Text costText;
+    public Button FoodButton1;
+    public Button FoodButton2;
+    public Button FoodButton3;
+    public Button waterDrinkButton;
+    public Button milkDrinkButton;
+    public Button milkShakeDrinkButton;
 
     [Header("Pages")]
     public GameObject mainPage;
     public GameObject storePage;
     public GameObject tablePage;
 
-    [Header("Food Images")]
+    [Header("Food Image")]
     public GameObject FoodImg1;
     public GameObject FoodImg2;
     public GameObject FoodImg3;
+
+    [Header("Drink Image")]
     public GameObject waterDrinkImg;
     public GameObject milkDrinkImg;
     public GameObject milkshakeDrinkImg;
 
-    [Header("Feed Buttons")]
+    [Header("Feed and Buy Buttons")]
     public Button buyButton;
     public Button feedButtonFood1;
     public Button feedButtonFood2;
@@ -47,16 +45,20 @@ public class BuynFeed : MonoBehaviour
     public Button feedButtonMilk;
     public Button feedButtonMilkshake;
 
+    // New variables for food selection
+    public TMP_Text descriptionText; // Reference to the description text
+    public TMP_Text costText;         // Reference to the cost text
+
     private int selectedFoodCost = 0;
-    private FoodItem selectedFoodItem;
     private bool isBuying = false;
 
-    // Define the FoodItem class
     public class FoodItem
     {
         public string itemName;
         public string description;
         public int cost;
+
+        public int hungerRestoreAmount;
         public FoodItem(string name, string desc, int price)
         {
             itemName = name;
@@ -65,22 +67,40 @@ public class BuynFeed : MonoBehaviour
         }
     }
 
-    // Food items
-    private FoodItem dogFood = new FoodItem("Dog Food", "+5 HUNGER", 10);
-    private FoodItem turkey = new FoodItem("Turkey", "+15 HUNGER", 30);
-    private FoodItem steak = new FoodItem("Steak", "+20 HUNGER", 50);
-    private FoodItem water = new FoodItem("Water", "+10 THIRST", 5);
-    private FoodItem milk = new FoodItem("Milk", "+15 THIRST", 15);
-    private FoodItem milkshake = new FoodItem("Milkshake", "+20 THIRST", 20);
+    // Food items information
+    private FoodItem[] foodItems = {
+        new FoodItem("Dog Food", "+5 HUNGER", 10),
+        new FoodItem("Turkey", "+15 HUNGER", 30),
+        new FoodItem("Steak", "+20 HUNGER", 50),
+        new FoodItem("Water", "+10 THIRST", 5),
+        new FoodItem("Milk", "+15 THIRST", 15),
+        new FoodItem("Milkshake", "+20 THIRST", 20)
+    };
 
     void Start()
     {
-        // Pages turned OFF
+        ValidateButtons();
+        SetInitialStates();
+        SetButtonListeners();
+    }
+
+    void ValidateButtons()
+    {
+        if (FoodButton1 == null || FoodButton2 == null || FoodButton3 == null ||
+            waterDrinkButton == null || milkDrinkButton == null || milkShakeDrinkButton == null ||
+            buyButton == null || feedButtonFood1 == null || feedButtonFood2 == null || feedButtonFood3 == null ||
+            feedButtonWater == null || feedButtonMilk == null || feedButtonMilkshake == null)
+        {
+            Debug.LogError("One or more buttons are not assigned!");
+        }
+    }
+
+    void SetInitialStates()
+    {
         mainPage.SetActive(false);
         storePage.SetActive(true);
         tablePage.SetActive(false);
 
-        // Food Images turned OFF
         FoodImg1.SetActive(false);
         FoodImg2.SetActive(false);
         FoodImg3.SetActive(false);
@@ -88,57 +108,59 @@ public class BuynFeed : MonoBehaviour
         milkDrinkImg.SetActive(false);
         milkshakeDrinkImg.SetActive(false);
 
-        // Set up button listeners
-        InitializeButton(DogFoodButton, dogFood);
-        InitializeButton(TurkeyButton, turkey);
-        InitializeButton(SteakButton, steak);
-        InitializeButton(WaterButton, water);
-        InitializeButton(MilkButton, milk);
-        InitializeButton(MilkShakeButton, milkshake);
+        // Set initial button visibility
+        feedButtonFood1.gameObject.SetActive(false);
+        feedButtonFood2.gameObject.SetActive(false);
+        feedButtonFood3.gameObject.SetActive(false);
+        feedButtonWater.gameObject.SetActive(false);
+        feedButtonMilk.gameObject.SetActive(false);
+        feedButtonMilkshake.gameObject.SetActive(true);
+    }
 
-        buyButton.onClick.RemoveAllListeners();
+    void SetButtonListeners()
+    {
+        // Food buttons listeners
+        FoodButton1.onClick.AddListener(() => SelectFood(0, FoodImg1, feedButtonFood1));
+        FoodButton2.onClick.AddListener(() => SelectFood(1, FoodImg2, feedButtonFood2));
+        FoodButton3.onClick.AddListener(() => SelectFood(2, FoodImg3, feedButtonFood3));
+        AudioManager.instance.Play("Selected");
+
+        // Drink buttons listeners
+        waterDrinkButton.onClick.AddListener(() => SelectFood(3, waterDrinkImg, feedButtonWater));
+        milkDrinkButton.onClick.AddListener(() => SelectFood(4, milkDrinkImg, feedButtonMilk));
+        milkShakeDrinkButton.onClick.AddListener(() => SelectFood(5, milkshakeDrinkImg, feedButtonMilkshake));
+        AudioManager.instance.Play("Selected");
+
+        // Buy and feed buttons listeners
         buyButton.onClick.AddListener(BuyItem);
-
-        // Feed buttons
-        feedButtonFood1.onClick.RemoveAllListeners();
-        feedButtonFood1.onClick.AddListener(() => FeedPet(selectedFoodItem, FoodImg1));
-
-        feedButtonFood2.onClick.RemoveAllListeners();
-        feedButtonFood2.onClick.AddListener(() => FeedPet(selectedFoodItem, FoodImg2));
-
-        feedButtonFood3.onClick.RemoveAllListeners();
-        feedButtonFood3.onClick.AddListener(() => FeedPet(selectedFoodItem, FoodImg3));
-
-        feedButtonWater.onClick.RemoveAllListeners();
-        feedButtonWater.onClick.AddListener(() => FeedPet(water, waterDrinkImg));
-
-        feedButtonMilk.onClick.RemoveAllListeners();
-        feedButtonMilk.onClick.AddListener(() => FeedPet(milk, milkDrinkImg));
-
-        feedButtonMilkshake.onClick.RemoveAllListeners();
-        feedButtonMilkshake.onClick.AddListener(() => FeedPet(milkshake, milkshakeDrinkImg));
+        feedButtonFood1.onClick.AddListener(() => FeedPet(0));
+        feedButtonFood2.onClick.AddListener(() => FeedPet(1));
+        feedButtonFood3.onClick.AddListener(() => FeedPet(2));
+        feedButtonWater.onClick.AddListener(() => FeedPet(3));
+        feedButtonMilk.onClick.AddListener(() => FeedPet(4));
+        feedButtonMilkshake.onClick.AddListener(() => FeedPet(5));
     }
 
-    void InitializeButton(Button button, FoodItem foodItem)
+    void SelectFood(int itemIndex, GameObject foodImage, Button feedButton)
     {
-        button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(() => ShowFoodInfo(foodItem));
+        if (itemIndex >= 0 && itemIndex < foodItems.Length)
+        {
+            selectedFoodCost = foodItems[itemIndex].cost;
+            UpdateFoodInfo(itemIndex);
+            foodImage.SetActive(true);
+            feedButton.gameObject.SetActive(true);
+            AudioManager.instance.Play("Selected");
+            Debug.Log("Selected food cost: " + selectedFoodCost);
+        }
     }
 
-    void ShowFoodInfo(FoodItem food)
+    void UpdateFoodInfo(int itemIndex)
     {
-        selectedFoodItem = food;
-        selectedFoodCost = food.cost;
-
         if (descriptionText != null && costText != null)
         {
-            descriptionText.text = food.description;
-            costText.text = "Cost: " + food.cost.ToString();
+            descriptionText.text = foodItems[itemIndex].description;
+            costText.text = "Coins: " + foodItems[itemIndex].cost.ToString();
         }
-
-        // Update UI to reflect selection
-        AudioManager.instance.Play("Selected");
-        // Update food image or any other UI components as needed
     }
 
     void BuyItem()
@@ -168,7 +190,7 @@ public class BuynFeed : MonoBehaviour
         isBuying = false;
     }
 
-    void FeedPet(FoodItem foodItem, GameObject foodImage)
+    public void FeedPet(int itemIndex)
     {
         if (coinScript == null)
         {
@@ -178,14 +200,15 @@ public class BuynFeed : MonoBehaviour
 
         if (itemPurchased && hungerLevel < 100)
         {
-            hungerLevel = Mathf.Min(hungerLevel + hungerRestoreAmount, 100); 
+            hungerLevel = Mathf.Min(hungerLevel + foodItems[itemIndex].hungerRestoreAmount, 100);
             Debug.Log("Pet fed. Hunger level: " + hungerLevel);
             itemPurchased = false;
             AudioManager.instance.Play("ButtonPressed");
             mainPage.SetActive(true);
             storePage.SetActive(false);
             tablePage.SetActive(true);
-            foodImage.SetActive(true);
+            // Activate the corresponding image based on the itemIndex
+            ActivateFoodImage(itemIndex);
         }
         else if (hungerLevel >= 100)
         {
@@ -197,5 +220,15 @@ public class BuynFeed : MonoBehaviour
             AudioManager.instance.Play("Wrong");
             Debug.Log("You need to purchase food first.");
         }
+    }
+
+    void ActivateFoodImage(int itemIndex)
+    {
+        FoodImg1.SetActive(itemIndex == 0);
+        FoodImg2.SetActive(itemIndex == 1);
+        FoodImg3.SetActive(itemIndex == 2);
+        waterDrinkImg.SetActive(itemIndex == 3);
+        milkDrinkImg.SetActive(itemIndex == 4);
+        milkshakeDrinkImg.SetActive(itemIndex == 5);
     }
 }

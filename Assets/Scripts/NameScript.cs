@@ -14,6 +14,7 @@ public class NameScript : MonoBehaviour
     {
         nameDisplayText.text = "";
         nameInputField.text = "";
+        
     }
 
     public void OnSubmitName()

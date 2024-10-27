@@ -2023,7 +2023,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5684010050296662249}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &832186377483859418
 GameObject:
   m_ObjectHideFlags: 0
@@ -2857,7 +2869,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1277017884}
         m_TargetAssemblyTypeName: StatsFunction, Assembly-CSharp
         m_MethodName: Play
         m_Mode: 1
@@ -3336,14 +3348,12 @@ MonoBehaviour:
   itemPurchased: 0
   hungerLevel: 20
   hungerRestoreAmount: 20
-  DogFoodButton: {fileID: 1981836385431188235}
-  TurkeyButton: {fileID: 831506133626583933}
-  SteakButton: {fileID: 3061437608992776571}
-  WaterButton: {fileID: 2746790221058683123}
-  MilkButton: {fileID: 1451763737061295953}
-  MilkShakeButton: {fileID: 2801912350418909194}
-  descriptionText: {fileID: 4105954611302968136}
-  costText: {fileID: 3353807510552345898}
+  FoodButton1: {fileID: 1981836385431188235}
+  FoodButton2: {fileID: 831506133626583933}
+  FoodButton3: {fileID: 3061437608992776571}
+  waterDrinkButton: {fileID: 2746790221058683123}
+  milkDrinkButton: {fileID: 1451763737061295953}
+  milkShakeDrinkButton: {fileID: 2801912350418909194}
   mainPage: {fileID: 5338046210026614047}
   storePage: {fileID: 7107850478125625317}
   tablePage: {fileID: 3926629482240793103}
@@ -3360,6 +3370,8 @@ MonoBehaviour:
   feedButtonWater: {fileID: 2094953240968642534}
   feedButtonMilk: {fileID: 4403564295345926832}
   feedButtonMilkshake: {fileID: 4940156428376185119}
+  descriptionText: {fileID: 4105954611302968136}
+  costText: {fileID: 3353807510552345898}
 --- !u!1 &1807239890718128415
 GameObject:
   m_ObjectHideFlags: 0
@@ -3526,19 +3538,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6375743571450681576}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4260929659858915430}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!224 &1982395536271567361
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4481,14 +4481,12 @@ MonoBehaviour:
   itemPurchased: 0
   hungerLevel: 20
   hungerRestoreAmount: 20
-  DogFoodButton: {fileID: 1981836385431188235}
-  TurkeyButton: {fileID: 831506133626583933}
-  SteakButton: {fileID: 3061437608992776571}
-  WaterButton: {fileID: 2746790221058683123}
-  MilkButton: {fileID: 1451763737061295953}
-  MilkShakeButton: {fileID: 2801912350418909194}
-  descriptionText: {fileID: 4105954611302968136}
-  costText: {fileID: 3353807510552345898}
+  FoodButton1: {fileID: 1981836385431188235}
+  FoodButton2: {fileID: 831506133626583933}
+  FoodButton3: {fileID: 3061437608992776571}
+  waterDrinkButton: {fileID: 2746790221058683123}
+  milkDrinkButton: {fileID: 1451763737061295953}
+  milkShakeDrinkButton: {fileID: 2801912350418909194}
   mainPage: {fileID: 5338046210026614047}
   storePage: {fileID: 7107850478125625317}
   tablePage: {fileID: 3926629482240793103}
@@ -4505,6 +4503,8 @@ MonoBehaviour:
   feedButtonWater: {fileID: 2094953240968642534}
   feedButtonMilk: {fileID: 4403564295345926832}
   feedButtonMilkshake: {fileID: 4940156428376185119}
+  descriptionText: {fileID: 4105954611302968136}
+  costText: {fileID: 3353807510552345898}
 --- !u!114 &2794960989181032597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5291,13 +5291,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 17
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -6197,13 +6197,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 17
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -9179,14 +9179,12 @@ MonoBehaviour:
   itemPurchased: 0
   hungerLevel: 20
   hungerRestoreAmount: 20
-  DogFoodButton: {fileID: 1981836385431188235}
-  TurkeyButton: {fileID: 831506133626583933}
-  SteakButton: {fileID: 3061437608992776571}
-  WaterButton: {fileID: 2746790221058683123}
-  MilkButton: {fileID: 1451763737061295953}
-  MilkShakeButton: {fileID: 2801912350418909194}
-  descriptionText: {fileID: 4105954611302968136}
-  costText: {fileID: 3353807510552345898}
+  FoodButton1: {fileID: 1981836385431188235}
+  FoodButton2: {fileID: 831506133626583933}
+  FoodButton3: {fileID: 3061437608992776571}
+  waterDrinkButton: {fileID: 2746790221058683123}
+  milkDrinkButton: {fileID: 1451763737061295953}
+  milkShakeDrinkButton: {fileID: 2801912350418909194}
   mainPage: {fileID: 5338046210026614047}
   storePage: {fileID: 7107850478125625317}
   tablePage: {fileID: 3926629482240793103}
@@ -9203,6 +9201,8 @@ MonoBehaviour:
   feedButtonWater: {fileID: 2094953240968642534}
   feedButtonMilk: {fileID: 4403564295345926832}
   feedButtonMilkshake: {fileID: 4940156428376185119}
+  descriptionText: {fileID: 4105954611302968136}
+  costText: {fileID: 3353807510552345898}
 --- !u!114 &6538181628042407568
 MonoBehaviour:
   m_ObjectHideFlags: 0

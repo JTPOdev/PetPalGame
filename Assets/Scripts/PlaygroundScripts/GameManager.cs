@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     int coinRandomizer;
     public static int coinAmount;
     public static int coinStore;
+    
     int score;
 
     [Header("Text")]
