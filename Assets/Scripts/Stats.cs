@@ -34,7 +34,7 @@ public class Stats : MonoBehaviour
     private const int MAX_HUNGER = 100;
     private const int MAX_ENERGY = 100;
 
-    private const float DECREASE_INTERVAL = 3f;
+    private const float DECREASE_INTERVAL = 15f;
 
     private Dictionary<string, bool> sceneSliderVisibility = new Dictionary<string, bool>
     {
@@ -101,12 +101,13 @@ public class Stats : MonoBehaviour
         SaveStats(); // Save after taking a bath
     }
 
-    public void HaveFun(int amount) 
-    { 
+    public void HaveFun(int amount)
+    {
         ChangeGlobalStat(ref funValue, MAX_FUN, amount);
         UpdateSlidersFromGlobalValues();
         SaveStats(); // Save after having fun
     }
+
 
     public void Drink(int amount) 
     { 
@@ -114,8 +115,8 @@ public class Stats : MonoBehaviour
         UpdateSlidersFromGlobalValues();
         SaveStats(); // Save after drinking
 
-        Debug.Log($"Eating amount: {amount}");
-        Debug.Log($"New hunger value: {hungerValue}");
+        Debug.Log($"Drinking amount: {amount}");
+        Debug.Log($"New thirst value: {thirstValue}");
     }
 
     public void Eat(int amount) 
@@ -217,6 +218,8 @@ public class Stats : MonoBehaviour
         thirstValue = PlayerPrefs.GetFloat("ThirstValue", MAX_THIRST);
         hungerValue = PlayerPrefs.GetFloat("HungerValue", MAX_HUNGER);
         energyValue = PlayerPrefs.GetFloat("EnergyValue", MAX_ENERGY);
+
+        UpdateSlidersFromGlobalValues();
     }
 
     //FUNCTION TO THE IMAGE, 

@@ -9,6 +9,10 @@ public class BuynFeed : MonoBehaviour
     public CoinScript coinScript;
     public FoodSelection foodSelection;
 
+    public StatsFunction statsFunction;
+
+    public Stats stats;
+
      public TMP_Text descriptionText;
     public TMP_Text costText;
     public bool itemPurchased = false;
@@ -50,7 +54,13 @@ public class BuynFeed : MonoBehaviour
     public Button feedButtonMilkshake;
 
     private int selectedFoodCost = 0;
+
     private bool isBuying = false;
+
+    private FoodType selectedFoodType;
+    private DrinkType selectedDrinkType;
+
+
 
     public class FoodItem
     {
@@ -64,6 +74,21 @@ public class BuynFeed : MonoBehaviour
             cost = price;
         }
     }
+    public enum FoodType
+    {
+        DogFood,
+        Turkey,
+        Steak,
+    }
+    public enum DrinkType
+    {
+        Water,
+        Milk,
+        Milkshake
+    }
+
+
+
     
     private FoodItem foodImg1 = new FoodItem("Dog Food", "+5 HUNGER", 10);
     private FoodItem foodImg2 = new FoodItem("Turkey", "+15 HUNGER", 30);
@@ -71,6 +96,8 @@ public class BuynFeed : MonoBehaviour
     private FoodItem water = new FoodItem("Water", "+10 THIRST", 5);
     private FoodItem milk = new FoodItem("Milk", "+15 THIRST", 15);
     private FoodItem milkshake = new FoodItem("Milkshake", "+20 THIRST", 20);
+
+
 
     void Start()
     {
@@ -115,36 +142,13 @@ public class BuynFeed : MonoBehaviour
         feedButtonMilk.gameObject.SetActive(false);
         feedButtonMilkshake.gameObject.SetActive(true);
 
-        FoodButton1.onClick.RemoveAllListeners();
-        FoodButton1.onClick.AddListener(() => ShowFoodInfo(foodImg1));
-        FoodButton1.onClick.AddListener(() => SelectFood(10));
-        FoodButton1.onClick.AddListener(FoodImage1);
+        FoodButton1.onClick.AddListener(() => { ShowFoodInfo(foodImg1); SelectFood(10, FoodType.DogFood); FoodImage1(); });
+        FoodButton2.onClick.AddListener(() => { ShowFoodInfo(foodImg2); SelectFood(30, FoodType.Turkey); FoodImage2(); });
+        FoodButton3.onClick.AddListener(() => { ShowFoodInfo(foodImg3); SelectFood(50, FoodType.Steak); FoodImage3(); });
+        waterDrinkButton.onClick.AddListener(() => { ShowFoodInfo(water); SelectDrink(water.cost, DrinkType.Water); waterDrinkImage(); });
+        milkDrinkButton.onClick.AddListener(() => { ShowFoodInfo(milk); SelectDrink(milk.cost, DrinkType.Milk); milkDrinkImage(); });
+        milkShakeDrinkButton.onClick.AddListener(() => { ShowFoodInfo(milkshake); SelectDrink(milkshake.cost, DrinkType.Milkshake); milkshakeDrinkImage(); });
 
-        FoodButton2.onClick.RemoveAllListeners();
-        FoodButton2.onClick.AddListener(() => ShowFoodInfo(foodImg2));
-         FoodButton2.onClick.AddListener(() => SelectFood(30));
-        FoodButton2.onClick.AddListener(FoodImage2);
-
-
-        FoodButton3.onClick.RemoveAllListeners();
-        FoodButton3.onClick.AddListener(() => ShowFoodInfo(foodImg3));
-         FoodButton3.onClick.AddListener(() => SelectFood(50));
-        FoodButton3.onClick.AddListener(FoodImage3);
-
-        waterDrinkButton.onClick.RemoveAllListeners();
-        waterDrinkButton.onClick.AddListener(() => ShowFoodInfo(water));
-        waterDrinkButton.onClick.AddListener(() => SelectFood(5));
-        waterDrinkButton.onClick.AddListener(waterDrinkImage);
-
-        milkDrinkButton.onClick.RemoveAllListeners();
-        milkDrinkButton.onClick.AddListener(() => ShowFoodInfo(milk));
-         milkDrinkButton.onClick.AddListener(() => SelectFood(15));
-        milkDrinkButton.onClick.AddListener(milkDrinkImage);
-
-        milkShakeDrinkButton.onClick.RemoveAllListeners();
-        milkShakeDrinkButton.onClick.AddListener(() => ShowFoodInfo(milkshake));
-         milkShakeDrinkButton.onClick.AddListener(() => SelectFood(20));
-        milkShakeDrinkButton.onClick.AddListener(milkshakeDrinkImage);
 
 
         buyButton.onClick.RemoveAllListeners();
@@ -170,11 +174,20 @@ public class BuynFeed : MonoBehaviour
     }
 
     // Select the food item and set its cost
-    void SelectFood(int itemCost)
+    void SelectFood(int itemCost, FoodType foodType)
     {
         selectedFoodCost = itemCost;
+        selectedFoodType = foodType; // Set selected food type
         Debug.Log("Selected food cost: " + selectedFoodCost);
     }
+
+    void SelectDrink(int itemCost, DrinkType drinkType)
+    {
+        selectedFoodCost = itemCost;  
+        selectedDrinkType = drinkType;  
+        Debug.Log("Selected drink cost: " + selectedFoodCost);
+    }
+
 
     void BuyItem()
     {
@@ -222,6 +235,7 @@ public class BuynFeed : MonoBehaviour
             storePage.SetActive(false);  //  Closes storepage scene
             tablePage.SetActive(true);
             FoodImg1.SetActive(true);
+            stats.Eat((int)selectedFoodType);
         }
         else if (hungerLevel >= 100)
         {
@@ -253,6 +267,7 @@ public class BuynFeed : MonoBehaviour
             storePage.SetActive(false);  //  Closes storepage scene
             tablePage.SetActive(true);
             FoodImg2.SetActive(true);
+            stats.Eat((int)selectedFoodType);
 
         }
         else if (hungerLevel >= 100)
@@ -285,6 +300,7 @@ public class BuynFeed : MonoBehaviour
             storePage.SetActive(false);  //  Closes storepage scene
             tablePage.SetActive(true);
             FoodImg3.SetActive(true);
+            stats.Eat((int)selectedFoodType);
 
         }
         else if (hungerLevel >= 100)
@@ -317,6 +333,7 @@ public class BuynFeed : MonoBehaviour
             storePage.SetActive(false);  //  Closes storepage scene
             tablePage.SetActive(true);
             waterDrinkImg.SetActive(true);
+            stats.Drink((int)selectedDrinkType); 
 
         }
         else if (hungerLevel >= 100)
@@ -349,7 +366,7 @@ public class BuynFeed : MonoBehaviour
             storePage.SetActive(false);  //  Closes storepage scene
             tablePage.SetActive(true);
             milkDrinkImg.SetActive(true);
-
+            stats.Drink((int)selectedDrinkType); 
         }
         else if (hungerLevel >= 100)
         {
@@ -381,7 +398,7 @@ public class BuynFeed : MonoBehaviour
             storePage.SetActive(false);  //  Closes storepage scene
             tablePage.SetActive(true);
             milkshakeDrinkImg.SetActive(true);
-
+           stats.Drink((int)selectedDrinkType); 
         }
         else if (hungerLevel >= 100)
         {

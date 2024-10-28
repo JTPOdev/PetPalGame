@@ -49,13 +49,11 @@ public class FoodSelection : MonoBehaviour
     {
         button.onClick.RemoveAllListeners();  
         button.onClick.AddListener(() => ShowFoodInfo(foodItem));
-        Debug.Log("Listener added to: " + foodItem.itemName);
 
     }
 
     void ShowFoodInfo(FoodItem food)
     {
-        Debug.Log("ShowFoodInfo called for: " + food.itemName);
         if (descriptionText != null && costText != null)
         {
             descriptionText.text = food.description;
