@@ -26,6 +26,8 @@ public class Stats : MonoBehaviour
     public float Energy => energyValue;
     public float Fun => funValue;
 
+    [SerializeField] private Image Image;
+
     private const int MAX_BATH = 100;
     private const int MAX_FUN = 100;
     private const int MAX_THIRST = 100;
@@ -147,11 +149,12 @@ public class Stats : MonoBehaviour
             DecreaseGlobalStat(ref funValue, 8);
             DecreaseGlobalStat(ref thirstValue, 3);
             DecreaseGlobalStat(ref hungerValue, 5);
-            DecreaseGlobalStat(ref energyValue, 4);
+            DecreaseGlobalStat(ref energyValue, 9);
 
-            // Update sliders in the current scene with the decreased values
             UpdateSlidersFromGlobalValues();
             SaveStats(); // Save after decreasing stats
+
+            CheckAndDisplayImg(); //dISPLAY IMG
         }
     }
 
@@ -214,5 +217,16 @@ public class Stats : MonoBehaviour
         thirstValue = PlayerPrefs.GetFloat("ThirstValue", MAX_THIRST);
         hungerValue = PlayerPrefs.GetFloat("HungerValue", MAX_HUNGER);
         energyValue = PlayerPrefs.GetFloat("EnergyValue", MAX_ENERGY);
+    }
+
+    //FUNCTION TO THE IMAGE, 
+    private void CheckAndDisplayImg()
+    {
+        bool showWarning = bathValue <= MAX_BATH / 2 || funValue <= MAX_FUN / 2 || thirstValue <= MAX_THIRST / 2 || hungerValue <= MAX_HUNGER / 2 || energyValue <= MAX_ENERGY / 2;
+
+        if (Image != null)
+        {
+            Image.gameObject.SetActive(showWarning);
+        }
     }
 }
