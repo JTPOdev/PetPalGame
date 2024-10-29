@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class Stats : MonoBehaviour
 {
+    public GameObject takebathButton;
+    public GameObject bubbleManager;
+    public GameObject bubbles;
+
     // Global stat values that persist across scenes
     private float bathValue;
     private float funValue;
@@ -25,8 +29,6 @@ public class Stats : MonoBehaviour
     public float Thirst => thirstValue;
     public float Energy => energyValue;
     public float Fun => funValue;
-
-    [SerializeField] private Image Image;
 
     private const int MAX_BATH = 100;
     private const int MAX_FUN = 100;
@@ -155,7 +157,6 @@ public class Stats : MonoBehaviour
             UpdateSlidersFromGlobalValues();
             SaveStats(); // Save after decreasing stats
 
-            CheckAndDisplayImg(); //dISPLAY IMG
         }
     }
 
@@ -185,7 +186,12 @@ public class Stats : MonoBehaviour
     public void CheckAndDisplayFullStats()
     {
         if (bathValue >= MAX_BATH)
+        {
+            bubbleManager.gameObject.SetActive(false);
+            bubbles.gameObject.SetActive(false);
+            takebathButton.gameObject.SetActive(false);
             DisplayFullStat("Bath is full!");
+        }
         if (funValue >= MAX_FUN)
             DisplayFullStat("Fun is full!");
         if (thirstValue >= MAX_THIRST)
@@ -220,16 +226,5 @@ public class Stats : MonoBehaviour
         energyValue = PlayerPrefs.GetFloat("EnergyValue", MAX_ENERGY);
 
         UpdateSlidersFromGlobalValues();
-    }
-
-    //FUNCTION TO THE IMAGE, 
-    private void CheckAndDisplayImg()
-    {
-        bool showWarning = bathValue <= MAX_BATH / 2 || funValue <= MAX_FUN / 2 || thirstValue <= MAX_THIRST / 2 || hungerValue <= MAX_HUNGER / 2 || energyValue <= MAX_ENERGY / 2;
-
-        if (Image != null)
-        {
-            Image.gameObject.SetActive(showWarning);
-        }
     }
 }

@@ -64,8 +64,12 @@ public class CatEatingScript : MonoBehaviour
         }
 
         countdownText.text = "ATE!";
+        table.SetActive(true);
+        path.SetActive(true);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
+        table.SetActive(true);
+        path.SetActive(true);
 
         countdownText.gameObject.SetActive(false);
         FoodImg_1.gameObject.SetActive(false);

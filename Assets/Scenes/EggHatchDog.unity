@@ -978,7 +978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 213f05cd6a969fe41b852eab7337bfbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PawAnim: {fileID: 0}
+  PawAnim: {fileID: 5719112483341206681}
   max: 10
   ClickCounter: 0
   barscript: {fileID: 1209955517}
